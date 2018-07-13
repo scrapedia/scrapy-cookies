@@ -3,17 +3,3 @@ branch = true
 include = scrapy_cookies/*
 omit =
   tests/*
-  scrapy_cookies/xlib/*
-  scrapy_cookies/conf.py
-  scrapy_cookies/stats.py
-  scrapy_cookies/project.py
-  scrapy_cookies/utils/decorator.py
-  scrapy_cookies/statscol.py
-  scrapy_cookies/squeue.py
-  scrapy_cookies/log.py
-  scrapy_cookies/dupefilter.py
-  scrapy_cookies/command.py
-  scrapy_cookies/linkextractor.py
-  scrapy_cookies/spider.py
-  scrapy_cookies/contrib/*
-  scrapy_cookies/contrib_exp/*
