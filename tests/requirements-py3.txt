@@ -1,11 +1,15 @@
-pytest==3.6.3
-pytest-twisted
-pytest-cov==2.5.1
-testfixtures
+# Tests requirements
+
+botocore
 jmespath
 leveldb
-botocore
+pytest==3.6.3
+pytest-cov==2.5.1
+pytest-twisted
+testfixtures
+
 # optional for shell wrapper tests
+
 bpython
-ipython
 brotlipy
+ipython
