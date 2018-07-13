@@ -71,6 +71,7 @@ setup(
         'parsel>=1.4',
         'PyDispatcher>=2.0.5',
         'service_identity',
+        'scrapy'
     ],
     extras_require=extras_require,
 )

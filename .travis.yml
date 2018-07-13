@@ -44,12 +44,12 @@ install:
 script: tox
 after_success:
   - codecov
-notifications:
-  irc:
-    use_notice: true
-    skip_join: true
-    channels:
-    - irc.freenode.org#scrapy
+#notifications:
+#  irc:
+#    use_notice: true
+#    skip_join: true
+#    channels:
+#    - irc.freenode.org#scrapy
 cache:
   directories:
     - $HOME/.cache/pip
