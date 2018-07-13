@@ -1,0 +1,15 @@
+include README.rst
+include AUTHORS
+include INSTALL
+include LICENSE
+include MANIFEST.in
+include scrapy_cookies/VERSION
+include scrapy_cookies/mime.types
+recursive-include scrapy_cookies/templates *
+recursive-include scrapy_cookies license.txt
+recursive-include docs *
+prune docs/build
+recursive-include extras *
+recursive-include bin *
+recursive-include tests *
+global-exclude __pycache__ *.py[cod]
