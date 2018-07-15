@@ -53,7 +53,11 @@ Companies using Scrapy
 
 See https://scrapy.org/companies/
 
+*Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
+
 Commercial Support
 ==================
 
 See https://scrapy.org/support/
+
+*Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
