@@ -50,6 +50,9 @@ after_success:
 #    skip_join: true
 #    channels:
 #    - irc.freenode.org#scrapy
+notifications:
+  slack:
+    secure: LBkMhWd/pPjoWNdJj6CZvUDTYfMucqJwLYfpGmsU6sAlUbVRpr8O489wNxqJfxSWeA5nP3Xvkd7GvdSHtufGvozejYD68HcMXDVCcrLrD40bIXcEkmWvkwuIMVFjYcNXeMu+djt23FFeSAEC4djll3W6p6br7O6xBX+orfE9gHPyw2POVrjXkbZ4qDZGmWXfb9v7+0up+wI7wuMdlHY4drct2o7J34WzCQYLQItvWpPXuWgy3F5ERsxwECKpn0dLmNstMfi3szwL8wzKiPIgl3xtD661XCPowT8H0faucDOQn1KcQbey98izsLE/odt23F1D3a13gWYO8zHTkmNqyVZfVE2So7fpL6NujIZgjRJPNT9EfLS7HaJMqieUU2EQj7ZKi0BsZuO7EPDOQQkCOqCO12MkMHfPFGNJ/qWTGW5gwwMnV7Oezq6wZi/NdhwFY9+Q3iuz40vjotRVwigkS/qiSU4LagNiO/UzFrmBABKYv/TBAx0m7iWHsrtH1WKVvrrGb26/EMGYoCQt2tDtpm4hLEX1Qb7nPCqgYMOpWMofAN/Svr06JJIE2kxKkGaS5OgVY8r6VZTZjNXdzjKF19h7TPAv/8cHt39IBURz7rSlYdDMfSqQTg1VcSphR0QIL/HWt6wPEZt4/Y+LyUNkgRjE7lrUkra0zkmXRxRSSL4=
 cache:
   directories:
     - $HOME/.cache/pip
