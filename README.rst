@@ -45,6 +45,8 @@ Community (blog, twitter, mail list, IRC)
 
 See https://scrapy.org/community/
 
+*Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
+
 Contributing
 ============
 
