@@ -61,16 +61,6 @@ setup(
     ],
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     install_requires=[
-        'Twisted>=13.1.0',
-        'w3lib>=1.17.0',
-        'queuelib',
-        'lxml',
-        'pyOpenSSL',
-        'cssselect>=0.9',
-        'six>=1.5.2',
-        'parsel>=1.4',
-        'PyDispatcher>=2.0.5',
-        'service_identity',
         'scrapy'
     ],
     extras_require=extras_require,
