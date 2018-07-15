@@ -28,6 +28,9 @@ Overview
 Requirements
 ============
 
+* Python 2.7 or Python 3.4+
+* Works on Linux, Windows, Mac OSX, BSD
+
 Install
 =======
 
@@ -37,8 +40,10 @@ Documentation
 Releases
 ========
 
-Community
-=========
+Community (blog, twitter, mail list, IRC)
+=========================================
+
+See https://scrapy.org/community/
 
 Contributing
 ============
@@ -46,5 +51,9 @@ Contributing
 Companies using Scrapy
 ======================
 
+See https://scrapy.org/companies/
+
 Commercial Support
 ==================
+
+See https://scrapy.org/support/
