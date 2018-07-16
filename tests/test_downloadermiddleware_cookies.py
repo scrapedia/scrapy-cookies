@@ -4,11 +4,13 @@ from unittest import TestCase
 
 from scrapy.exceptions import NotConfigured
 from scrapy.http import Response, Request
+from scrapy.settings import Settings
 from scrapy.spiders import Spider
 from scrapy.utils.test import get_crawler
 from testfixtures import LogCapture
 
 from scrapy_cookies.downloadermiddlewares.cookies import CookiesMiddleware
+from scrapy_cookies.settings import default_settings
 
 
 class CookiesMiddlewareTest(TestCase):
@@ -21,7 +23,9 @@ class CookiesMiddlewareTest(TestCase):
 
     def setUp(self):
         self.spider = Spider('foo')
-        self.mw = CookiesMiddleware()
+        settings = Settings()
+        settings.setmodule(default_settings)
+        self.mw = CookiesMiddleware(settings)
 
     def tearDown(self):
         del self.mw

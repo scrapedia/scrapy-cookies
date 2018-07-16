@@ -42,9 +42,9 @@ def get_request_cookies(jar, request):
 class CookiesMiddleware(object):
     """This middleware enables working with sites that need cookies"""
 
-    def __init__(self, debug=False):
+    def __init__(self, settings):
         self.jars = defaultdict(CookieJar)
-        self.debug = debug
+        self.debug = settings['COOKIES_DEBUG']
 
     @classmethod
     def from_crawler(cls, crawler):
@@ -54,7 +54,7 @@ class CookiesMiddleware(object):
             )
         if not crawler.settings.getbool('COOKIES_ENABLED'):
             raise NotConfigured
-        return cls(crawler.settings.getbool('COOKIES_DEBUG'))
+        return cls(crawler.settings)
 
     def process_request(self, request, spider):
         if request.meta.get('dont_merge_cookies', False):
