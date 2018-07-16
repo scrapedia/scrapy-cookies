@@ -4,8 +4,6 @@ comment:
 coverage:
   status:
     project: false
-
-coverage:
   notify:
     slack:
       default:
