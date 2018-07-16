@@ -10,6 +10,32 @@ from scrapy.utils.python import to_native_str
 logger = logging.getLogger(__name__)
 
 
+def format_cookie(cookie):
+    # build cookie string
+    cookie_str = '{}={}'.format(cookie['name'], cookie['value'])
+
+    if cookie.get('path', None):
+        cookie_str += '; Path={}'.format(cookie['path'])
+    if cookie.get('domain', None):
+        cookie_str += '; Domain={}'.format(cookie['domain'])
+
+    return cookie_str
+
+
+def get_request_cookies(jar, request):
+    if isinstance(request.cookies, dict):
+        cookie_list = [{'name': k, 'value': v}
+                       for k, v in six.iteritems(request.cookies)]
+    else:
+        cookie_list = request.cookies
+
+    cookies = [format_cookie(x) for x in cookie_list]
+    headers = {'Set-Cookie': cookies}
+    response = Response(request.url, headers=headers)
+
+    return jar.make_cookies(response, request)
+
+
 class CookiesMiddleware(object):
     """This middleware enables working with sites that need cookies"""
 
@@ -29,7 +55,7 @@ class CookiesMiddleware(object):
 
         cookiejarkey = request.meta.get("cookiejar")
         jar = self.jars[cookiejarkey]
-        cookies = self._get_request_cookies(jar, request)
+        cookies = get_request_cookies(jar, request)
         for cookie in cookies:
             jar.set_cookie_if_ok(cookie, request)
 
@@ -67,27 +93,3 @@ class CookiesMiddleware(object):
                 cookies = "\n".join("Set-Cookie: {}\n".format(c) for c in cl)
                 msg = "Received cookies from: {}\n{}".format(response, cookies)
                 logger.debug(msg, extra={'spider': spider})
-
-    def _format_cookie(self, cookie):
-        # build cookie string
-        cookie_str = '%s=%s' % (cookie['name'], cookie['value'])
-
-        if cookie.get('path', None):
-            cookie_str += '; Path=%s' % cookie['path']
-        if cookie.get('domain', None):
-            cookie_str += '; Domain=%s' % cookie['domain']
-
-        return cookie_str
-
-    def _get_request_cookies(self, jar, request):
-        if isinstance(request.cookies, dict):
-            cookie_list = [{'name': k, 'value': v} for k, v in \
-                    six.iteritems(request.cookies)]
-        else:
-            cookie_list = request.cookies
-
-        cookies = [self._format_cookie(x) for x in cookie_list]
-        headers = {'Set-Cookie': cookies}
-        response = Response(request.url, headers=headers)
-
-        return jar.make_cookies(response, request)
