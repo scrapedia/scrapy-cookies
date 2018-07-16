@@ -1,12 +1,12 @@
-import re
 import logging
+import re
 from unittest import TestCase
-from testfixtures import LogCapture
 
+from scrapy.exceptions import NotConfigured
 from scrapy.http import Response, Request
 from scrapy.spiders import Spider
 from scrapy.utils.test import get_crawler
-from scrapy.exceptions import NotConfigured
+from testfixtures import LogCapture
 
 from scrapy_cookies.downloadermiddlewares.cookies import CookiesMiddleware
 
