@@ -5,7 +5,10 @@ import six
 from scrapy.exceptions import NotConfigured
 from scrapy.http import Response
 from scrapy.http.cookies import CookieJar
+from scrapy.settings import SETTINGS_PRIORITIES
 from scrapy.utils.python import to_native_str
+
+from scrapy_cookies.settings import default_settings, unfreeze_settings
 
 logger = logging.getLogger(__name__)
 
@@ -45,6 +48,10 @@ class CookiesMiddleware(object):
 
     @classmethod
     def from_crawler(cls, crawler):
+        with unfreeze_settings(crawler.settings) as settings:
+            settings.setmodule(
+                module=default_settings, priority=SETTINGS_PRIORITIES['default']
+            )
         if not crawler.settings.getbool('COOKIES_ENABLED'):
             raise NotConfigured
         return cls(crawler.settings.getbool('COOKIES_DEBUG'))
