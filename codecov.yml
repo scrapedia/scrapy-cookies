@@ -4,3 +4,9 @@ comment:
 coverage:
   status:
     project: false
+
+coverage:
+  notify:
+    slack:
+      default:
+        url: "secret:KQc0qNe30SGOA3baphzz48aXGWPJlE6qDlk4qZGGdW8fAEEJG8lHubU9301vJCECqEhv5E+JNHXfWKd+bcKjhIc5nhgt2w2BaZyEXEawhaTx0MJZ8xjX/unaul2wA5rL3ZkV4loVbN34sOq7vFgEzSS"
