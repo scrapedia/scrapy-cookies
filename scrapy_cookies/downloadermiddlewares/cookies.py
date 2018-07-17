@@ -1,6 +1,7 @@
 import logging
 
 import six
+from scrapy import signals
 from scrapy.exceptions import NotConfigured
 from scrapy.http import Response
 from scrapy.settings import SETTINGS_PRIORITIES
@@ -53,7 +54,16 @@ class CookiesMiddleware(object):
             )
         if not crawler.settings.getbool('COOKIES_ENABLED'):
             raise NotConfigured
-        return cls(crawler.settings)
+        o = cls(crawler.settings)
+        crawler.signals.connect(o.spider_opened, signal=signals.spider_opened)
+        crawler.signals.connect(o.spider_closed, signal=signals.spider_closed)
+        return o
+
+    def spider_opened(self, spider):
+        self.jars.open_spider(spider)
+
+    def spider_closed(self, spider):
+        self.jars.close_spider(spider)
 
     def process_request(self, request, spider):
         if request.meta.get('dont_merge_cookies', False):

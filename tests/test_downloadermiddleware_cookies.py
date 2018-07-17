@@ -26,8 +26,10 @@ class CookiesMiddlewareTest(TestCase):
         settings = Settings()
         settings.setmodule(default_settings)
         self.mw = CookiesMiddleware(settings)
+        self.mw.spider_opened(self.spider)
 
     def tearDown(self):
+        self.mw.spider_closed(self.spider)
         del self.mw
 
     def test_basic(self):
