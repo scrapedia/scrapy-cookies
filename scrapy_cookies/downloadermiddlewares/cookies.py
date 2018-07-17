@@ -79,6 +79,7 @@ class CookiesMiddleware(object):
         cookiejar_key = request.meta.get("cookiejar")
         jar = self.jars[cookiejar_key]
         jar.extract_cookies(response, request)
+        self.jars[cookiejar_key] = jar
         self._debug_set_cookie(response, spider)
 
         return response
