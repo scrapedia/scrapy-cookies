@@ -1,11 +1,10 @@
 import logging
-from collections import defaultdict
 
 import six
 from scrapy.exceptions import NotConfigured
 from scrapy.http import Response
-from scrapy.http.cookies import CookieJar
 from scrapy.settings import SETTINGS_PRIORITIES
+from scrapy.utils.misc import load_object
 from scrapy.utils.python import to_native_str
 
 from scrapy_cookies.settings import default_settings, unfreeze_settings
@@ -43,7 +42,7 @@ class CookiesMiddleware(object):
     """This middleware enables working with sites that need cookies"""
 
     def __init__(self, settings):
-        self.jars = defaultdict(CookieJar)
+        self.jars = load_object(settings['COOKIES_STORAGE'])(settings)
         self.debug = settings['COOKIES_DEBUG']
 
     @classmethod
