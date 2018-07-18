@@ -2,6 +2,7 @@ import logging
 import re
 from unittest import TestCase
 
+from scrapy.crawler import Crawler
 from scrapy.exceptions import NotConfigured
 from scrapy.http import Response, Request
 from scrapy.settings import Settings
@@ -25,7 +26,8 @@ class CookiesMiddlewareTest(TestCase):
         self.spider = Spider('foo')
         settings = Settings()
         settings.setmodule(default_settings)
-        self.mw = CookiesMiddleware(settings)
+        self.crawler = Crawler(self.spider, settings)
+        self.mw = CookiesMiddleware.from_crawler(self.crawler)
         self.mw.spider_opened(self.spider)
 
     def tearDown(self):
