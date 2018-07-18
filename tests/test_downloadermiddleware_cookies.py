@@ -1,5 +1,10 @@
+import io
 import logging
+import os
+import pickle
 import re
+import shutil
+import tempfile
 from unittest import TestCase
 
 from scrapy.crawler import Crawler
@@ -7,6 +12,7 @@ from scrapy.exceptions import NotConfigured
 from scrapy.http import Response, Request
 from scrapy.settings import Settings
 from scrapy.spiders import Spider
+from scrapy.utils.misc import load_object
 from scrapy.utils.test import get_crawler
 from testfixtures import LogCapture
 
@@ -24,6 +30,7 @@ class CookiesMiddlewareTest(TestCase):
 
     def setUp(self):
         self.spider = Spider('foo')
+        self.tmpdir = tempfile.mkdtemp()
         settings = Settings()
         settings.setmodule(default_settings)
         self.crawler = Crawler(self.spider, settings)
@@ -33,6 +40,7 @@ class CookiesMiddlewareTest(TestCase):
     def tearDown(self):
         self.mw.spider_closed(self.spider)
         del self.mw
+        shutil.rmtree(self.tmpdir)
 
     def test_basic(self):
         req = Request('http://scrapytest.org/')
@@ -238,3 +246,20 @@ class CookiesMiddlewareTest(TestCase):
         assert self.mw.process_request(request, self.spider) is None
         self.assertIn('Cookie', request.headers)
         self.assertEqual(b'currencyCookie=USD', request.headers['Cookie'])
+
+    def test_cookies_persistence(self):
+        settings = Settings()
+        settings.setmodule(default_settings)
+        settings.set('COOKIES_PERSISTENCE', True)
+        settings.set('COOKIES_PERSISTENCE_DIR', self.tmpdir + '/cookies')
+        crawler = Crawler(self.spider, settings)
+        mw = CookiesMiddleware.from_crawler(crawler)
+        mw.spider_opened(self.spider)
+        mw.spider_closed(self.spider)
+
+        assert os.path.isfile(self.tmpdir + '/cookies') is True
+
+        with io.open(self.tmpdir + '/cookies', 'br') as f:
+            self.assertIsInstance(
+                pickle.load(f), load_object(settings['COOKIES_STORAGE'])
+            )
