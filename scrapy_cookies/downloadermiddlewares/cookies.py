@@ -43,7 +43,8 @@ class CookiesMiddleware(object):
     """This middleware enables working with sites that need cookies"""
 
     def __init__(self, settings):
-        self.jars = load_object(settings['COOKIES_STORAGE'])(settings)
+        self.settings = settings
+        self.jars = load_object(settings['COOKIES_STORAGE']).from_middleware(self)
         self.debug = settings['COOKIES_DEBUG']
 
     @classmethod

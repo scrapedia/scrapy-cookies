@@ -8,6 +8,10 @@ class BaseStorage(MutableMapping):
     def __init__(self, settings):
         self.settings = settings
 
+    @classmethod
+    def from_middleware(cls, middleware):
+        return cls(middleware.settings)
+
     @property
     def logger(self):
         logger = logging.getLogger(self.name)
