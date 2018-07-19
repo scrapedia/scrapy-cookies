@@ -12,7 +12,6 @@ from scrapy.exceptions import NotConfigured
 from scrapy.http import Response, Request
 from scrapy.settings import Settings
 from scrapy.spiders import Spider
-from scrapy.utils.misc import load_object
 from scrapy.utils.test import get_crawler
 from testfixtures import LogCapture
 
@@ -260,6 +259,4 @@ class CookiesMiddlewareTest(TestCase):
         assert os.path.isfile(self.tmpdir + '/cookies') is True
 
         with io.open(self.tmpdir + '/cookies', 'br') as f:
-            self.assertIsInstance(
-                pickle.load(f), load_object(settings['COOKIES_STORAGE'])
-            )
+            self.assertIsInstance(pickle.load(f), dict)
