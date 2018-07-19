@@ -44,12 +44,6 @@ install:
 script: tox
 after_success:
   - codecov
-#notifications:
-#  irc:
-#    use_notice: true
-#    skip_join: true
-#    channels:
-#    - irc.freenode.org#scrapy
 notifications:
   slack:
     rooms:
@@ -67,3 +61,9 @@ cache:
 #     tags: true
 #     repo: scrapy/scrapy
 #     condition: "$TOXENV == py27 && $TRAVIS_TAG =~ ^[0-9]+[.][0-9]+[.][0-9]+(rc[0-9]+|[.]dev[0-9]+)?$"
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: grammy.jiang
+  password:
+    secure: weU3PkUSAL8jAwG84z1GiBMLL77E296L7l4GDYB8ufZoMG9auO5FdPnYFmlMvIKfP//J9fxyYFepmQYimYZFaeEmxpICdxcNka7srry3QCZgVaIVVH3bUkkx1/qw+EAHtVX9LbQL0ZpeDvagrLVfO80TXYqzKzFpr7U3a0ao8ZRHPWB59MQMP8UNsk4u/GT5criNUpcD1eMp5ciyK2Ph7v0OQPxhoqXlscAoDRFKUIkZFfk/C/JjMOqWXgG0PKnphW9xk/VRpG8kgoyFZ52AAzwGPqqctTXd2uraEa6+YvFtI972lQBGV2jg8sRnt+rKDRggkI/tFLL9PT1CXm9Wi/6n1MSYHN9LycIeqqp0er+S3BguL4z4MGgb+lMnTWbkvyyX9HcbgSpm+W1gNSDE5KZUFEes0ErbKm/egcDJMyd5f8IwYKihZrHSDkRkAZkaW32R3YHLnQjsYJn0lSy376IJ4DzcoYJejJM1UvVuikO43zDxggbwJtzRB1XDmxHSP7SoTstTaFys5FRuJy4SPxqrkJ0673NVUfWT/QXP/xP3MPTtTbwkOkqpAVVXcAxXQYAGycJ15pEuSVZsfTalNQ5z1kzbpRgOxUWpNm4g8kB1Alh/uyfgpEhLCuaGHaxryPBVfFE9poNaQgpYgdUv1FO3gu6zz6r80c2hoFa6SaE=
