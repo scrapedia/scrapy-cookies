@@ -60,5 +60,5 @@ deploy:
   on:
     tags: false
     repo: grammy-jiang/scrapy-cookies
-    condition: "$TOXENV == py27 && $TRAVIS_TAG =~ ^[0-9]+[.][0-9]+[.][0-9]+(rc[0-9]+|[.]dev[0-9]+)?$"
+    condition: "$TOXENV == py36"
 
