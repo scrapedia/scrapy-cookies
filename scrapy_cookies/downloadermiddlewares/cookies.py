@@ -61,6 +61,8 @@ class CookiesMiddleware(object):
         return o
 
     def spider_opened(self, spider):
+        logger.info('%s is used as the cookies storage.',
+                    self.settings['COOKIES_STORAGE'])
         self.jars.open_spider(spider)
 
     def spider_closed(self, spider):
