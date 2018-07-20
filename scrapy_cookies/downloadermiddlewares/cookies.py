@@ -77,6 +77,7 @@ class CookiesMiddleware(object):
         cookies = get_request_cookies(jar, request)
         for cookie in cookies:
             jar.set_cookie_if_ok(cookie, request)
+        self.jars[cookiejar_key] = jar
 
         # set Cookie header
         request.headers.pop('Cookie', None)

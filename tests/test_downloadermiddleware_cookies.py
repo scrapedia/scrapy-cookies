@@ -78,6 +78,7 @@ class CookiesMiddlewareTest(TestCase):
     def test_setting_enabled_cookies_debug(self):
         crawler = get_crawler(settings_dict={'COOKIES_DEBUG': True})
         mw = CookiesMiddleware.from_crawler(crawler)
+        mw.spider_opened(self.spider)
         with LogCapture('scrapy_cookies.downloadermiddlewares.cookies',
                         propagate=False,
                         level=logging.DEBUG) as l:
@@ -102,6 +103,7 @@ class CookiesMiddlewareTest(TestCase):
     def test_setting_disabled_cookies_debug(self):
         crawler = get_crawler(settings_dict={'COOKIES_DEBUG': False})
         mw = CookiesMiddleware.from_crawler(crawler)
+        mw.spider_opened(self.spider)
         with LogCapture('scrapy_cookies.downloadermiddlewares.cookies',
                         propagate=False,
                         level=logging.DEBUG) as l:
