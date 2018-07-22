@@ -46,3 +46,52 @@ class SQLiteStorage(BaseStorage):
 
     def close_spider(self, spider):
         self.conn.close()
+
+    def __delitem__(self, v):
+        self.cur.execute(
+            'DELETE FROM cookies WHERE cookiejar_key=?', pickle.dumps(v)
+        )
+
+    def __getitem__(self, k):
+        result = self.cur.execute(
+            'SELECT cookiejar as "cookiejar [CookieJar]" '
+            'FROM cookies '
+            'WHERE cookiejar_key=?',
+            (pickle.dumps(k),)
+        ).fetchone()
+        if result:
+            return result['cookiejar']
+        if hasattr(self.__class__, "__missing__"):
+            return self.__class__.__missing__(self, k)
+        raise KeyError(k)
+
+    def __iter__(self):
+        return iter(
+            self.cur.execute(
+                'SELECT cookiejar_key as "cookiejar_key [CookieJar_key]", cookiejar as "cookiejar [CookieJar]" '
+                'FROM cookies'
+            ).fetchall()
+        )
+
+    def __len__(self):
+        return self.cur.execute('SELECT COUNT(*) FROM cookies').fetchone()[0]
+
+    def __setitem__(self, k, v):
+        self.cur.execute(
+            'INSERT OR REPLACE INTO cookies (cookiejar_key, cookiejar, str) VALUES (?, ?, ?)',
+            (pickle.dumps(k), v, str(k))
+        )
+
+    def __missing__(self, k):
+        v = CookieJar()
+        self.__setitem__(k, v)
+        return v
+
+    def __contains__(self, k):
+        self.cur.execute(
+            'SELECT cookiejar as "cookiejar [CookieJar]" '
+            'FROM cookies '
+            'WHERE cookiejar_key=?',
+            (pickle.dumps(k),)
+        )
+        return bool(self.cur.fetchone())
