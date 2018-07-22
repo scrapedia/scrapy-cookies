@@ -1,4 +1,6 @@
+import io
 import logging
+import os
 import pickle
 import sqlite3
 
@@ -38,6 +40,11 @@ class SQLiteStorage(BaseStorage):
             isolation_level=None)
         self.conn.row_factory = sqlite3.Row
         self.cur = self.conn.cursor()
+        if self.database == ':memory:':
+            if self.settings['COOKIES_PERSISTENCE'] and os.path.isfile(self.cookies_dir):
+                with io.open(self.cookies_dir, 'r') as f:
+                    self.cur.executescript(f.read())
+                return
         self.cur.execute(
             'CREATE TABLE IF NOT EXISTS cookies ('
             'cookiejar_key BLOB PRIMARY KEY UNIQUE, cookiejar BLOB, str TEXT'
@@ -45,6 +52,10 @@ class SQLiteStorage(BaseStorage):
         )
 
     def close_spider(self, spider):
+        if self.database == ':memory:' and self.settings['COOKIES_PERSISTENCE']:
+            with open(self.cookies_dir, 'w') as f:
+                for line in self.conn.iterdump():
+                    f.write('%s\n' % line)
         self.conn.close()
 
     def __delitem__(self, v):

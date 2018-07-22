@@ -50,6 +50,8 @@ class StorageTest(TestCase):
         local_settings = {
             'COOKIES_STORAGE': 'scrapy_cookies.storage.sqlite.SQLiteStorage',
             'COOKIES_SQLITE_DATABASE': ':memory:',
+            'COOKIES_PERSISTENCE': True,
+            'COOKIES_PERSISTENCE_DIR': tmpdir + '/cookies'
         }
         settings = deepcopy(self.settings)
         settings.setdict(local_settings)
@@ -76,3 +78,12 @@ class StorageTest(TestCase):
             self.assertDictEqual(v._cookies, _dict[k])
 
         storage.close_spider(self.spider)
+        self.assertTrue(os.path.isfile(tmpdir + '/cookies'))
+
+        storage_2 = SQLiteStorage(settings)
+        storage_2.open_spider(self.spider)
+        self.assertIn('key_1', storage_2)
+        self.assertDictEqual(storage_2['key_1']._cookies, CookieJar()._cookies)
+
+        storage_2.close_spider(self.spider)
+        self.assertTrue(os.path.isfile(tmpdir + '/cookies'))
