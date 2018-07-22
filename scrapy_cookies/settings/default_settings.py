@@ -9,3 +9,10 @@ COOKIES_PERSISTENCE_DIR = 'cookies'
 # ------------------------------------------------------------------------------
 
 COOKIES_STORAGE = 'scrapy_cookies.storage.in_memory.InMemoryStorage'
+
+# ------------------------------------------------------------------------------
+# SQLITE STORAGE
+# ------------------------------------------------------------------------------
+
+# COOKIES_STORAGE = 'scrapy_cookies.storage.sqlite.SQLiteStorage'
+# COOKIES_SQLITE_DATABASE = ':memory:'
