@@ -25,20 +25,37 @@ Scrapy Cookies
 Overview
 ========
 
+This middleware enable Scrapy manage, save and restore cookies in various ways.
+With this middleware Scrapy can easily re-use cookies which saved before or
+in multiple spiders, and share cookies between spiders, even in spider-cluster.
+
 Requirements
 ============
 
 * Python 2.7 or Python 3.4+
 * Works on Linux, Windows, Mac OSX, BSD
 
-Install
-=======
+Installation
+============
+
+The quick way:
+
+   pip install scrapy-cookies
+
+For more details see the install section in the documentation:
+https://scrapy-cookies.readthedocs.io/en/latest/intro/install.html
 
 Documentation
 =============
 
+Documentation is available online at
+https://scrapy-cookies.readthedocs.io/en/latest/ and in the ``docs`` directory.
+
 Releases
 ========
+
+You can find release notes at
+https://scrapy-cookies.readthedocs.io/en/latest/news.html
 
 Community (blog, twitter, mail list, IRC)
 =========================================
