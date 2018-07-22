@@ -247,18 +247,3 @@ class CookiesMiddlewareTest(TestCase):
         assert self.mw.process_request(request, self.spider) is None
         self.assertIn('Cookie', request.headers)
         self.assertEqual(b'currencyCookie=USD', request.headers['Cookie'])
-
-    def test_cookies_persistence(self):
-        settings = Settings()
-        settings.setmodule(default_settings)
-        settings.set('COOKIES_PERSISTENCE', True)
-        settings.set('COOKIES_PERSISTENCE_DIR', self.tmpdir + '/cookies')
-        crawler = Crawler(self.spider, settings)
-        mw = CookiesMiddleware.from_crawler(crawler)
-        mw.spider_opened(self.spider)
-        mw.spider_closed(self.spider)
-
-        assert os.path.isfile(self.tmpdir + '/cookies') is True
-
-        with io.open(self.tmpdir + '/cookies', 'br') as f:
-            self.assertIsInstance(pickle.load(f), dict)
