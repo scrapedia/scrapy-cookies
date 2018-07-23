@@ -12,9 +12,9 @@ Python implementation) and PyPy (starting with PyPy 5.9).
 
 You can install Scrapy-Cookies and its dependencies from PyPI with::
 
-    pip install Scrapy
+    pip install Scrapy-Cookies
 
-We strongly recommend that you install Scrapy in
+We strongly recommend that you install Scrapy and Scrapy-Cookies in
 :ref:`a dedicated virtualenv <intro-using-virtualenv>`, to avoid conflicting
 with your system packages.
 
@@ -48,13 +48,14 @@ TL;DR: We recommend installing Scrapy-Cookies inside a virtual environment on
 all platforms.
 
 Python packages can be installed either globally (a.k.a system wide), or in
-user-space. We do not recommend installing scrapy system wide.
+user-space. We do not recommend installing Scrapy and Scrapy-Cookies
+system wide.
 
-Instead, we recommend that you install Scrapy-Cookies within a so-called
-"virtual environment" (`virtualenv`_). Virtualenvs allow you to not conflict
-with already-installed Python system packages (which could break some of your
-system tools and scripts), and still install packages normally with ``pip``
-(without ``sudo`` and the likes).
+Instead, we recommend that you install Scrapy and Scrapy-Cookies within a
+so-called "virtual environment" (`virtualenv`_). Virtualenvs allow you to not
+conflict with already-installed Python system packages (which could break some
+of your system tools and scripts), and still install packages normally with
+``pip`` (without ``sudo`` and the likes).
 
 To get started with virtual environments, see
 `virtualenv installation instructions`_. To install it globally (having it

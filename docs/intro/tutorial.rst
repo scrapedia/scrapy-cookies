@@ -9,12 +9,12 @@ system. If that's not the case, see :ref:`intro-installation`.
 
 This tutorial will walk you through these tasks:
 
-1. Use various storages in this middleware
+1. Use various storage classes in this middleware
 2. Save cookies on disk
 
 
-Use various storages in this middleware
-=======================================
+Use various storage classes in this middleware
+==============================================
 
 Before you start scraping, just put the following code into your settings.py::
 
@@ -23,10 +23,10 @@ Before you start scraping, just put the following code into your settings.py::
         'scrapy_cookies.downloadermiddlewares.cookies.CookiesMiddleware': 700,
     })
 
-With the default settings of this middleware, a in memory storage will be used.
+With the default settings of this middleware, a in-memory storage will be used.
 
 There is also another storage named SQLiteStorage. If you want to use it instead
-of the in memory one, simple put the following code under the previous one::
+of the in-memory one, simple put the following code below the previous one::
 
     COOKIES_STORAGE = 'scrapy_cookies.storage.sqlite.SQLiteStorage'
     COOKIES_SQLITE_DATABASE = ':memory:'
