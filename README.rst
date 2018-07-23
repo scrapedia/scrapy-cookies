@@ -43,7 +43,7 @@ The quick way:
    pip install scrapy-cookies
 
 For more details see the install section in the documentation:
-https://scrapy-cookies.readthedocs.io/en/latest/intro/install.html
+https://scrapy-cookies.readthedocs.io/en/latest/intro/installation.html
 
 Documentation
 =============
@@ -60,12 +60,15 @@ https://scrapy-cookies.readthedocs.io/en/latest/news.html
 Community (blog, twitter, mail list, IRC)
 =========================================
 
-See https://scrapy.org/community/
-
 *Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
+
+See https://scrapy.org/community/
 
 Contributing
 ============
+
+*Keeping this section same as Scrapy is intending to be easier when this repo
+merge back to Scrapy.*
 
 See https://doc.scrapy.org/en/master/contributing.html
 
@@ -78,19 +81,17 @@ Please note that this project is released with a Contributor Code of Conduct
 By participating in this project you agree to abide by its terms.
 Please report unacceptable behavior to opensource@scrapinghub.com.
 
-*Keeping this section same as Scrapy is intending to be easier when this repo
-merge back to Scrapy.*
 
 Companies using Scrapy
 ======================
 
-See https://scrapy.org/companies/
-
 *Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
+
+See https://scrapy.org/companies/
 
 Commercial Support
 ==================
 
-See https://scrapy.org/support/
-
 *Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
+
+See https://scrapy.org/support/
