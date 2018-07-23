@@ -6,28 +6,6 @@ Scrapy-Cookies |version| documentation
 
 This documentation contains everything you need to know about Scrapy-Cookies.
 
-Getting help
-============
-
-*Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
-
-Having trouble? We'd like to help!
-
-* Try the :doc:`FAQ <faq>` -- it's got answers to some common questions.
-* Looking for specific information? Try the :ref:`genindex` or :ref:`modindex`.
-* Ask or search questions in `StackOverflow using the scrapy tag`_.
-* Ask or search questions in the `Scrapy subreddit`_.
-* Search for questions on the archives of the `scrapy-users mailing list`_.
-* Ask a question in the `#scrapy IRC channel`_,
-* Report bugs with Scrapy in our `issue tracker`_.
-
-.. _scrapy-users mailing list: https://groups.google.com/forum/#!forum/scrapy-users
-.. _Scrapy subreddit: https://www.reddit.com/r/scrapy/
-.. _StackOverflow using the scrapy tag: https://stackoverflow.com/tags/scrapy
-.. _#scrapy IRC channel: irc://irc.freenode.net/scrapy
-.. _issue tracker: https://github.com/scrapy/scrapy/issues
-
-
 First steps
 ===========
 
@@ -73,8 +51,7 @@ Basic concepts
     Save ,restore and share the cookies.
 
 :doc:`topics/settings`
-    Learn how to configure Scrapy-Cookies and see all
-    :ref:`available settings <topics-settings-ref>`.
+    Learn how to configure Scrapy-Cookies and see all available settings.
 
 
 .. _extending-scrapy:
