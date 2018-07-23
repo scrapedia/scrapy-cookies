@@ -32,13 +32,13 @@ First steps
 ===========
 
 .. toctree::
-:caption: First steps
-       :hidden:
+   :caption: First steps
+   :hidden:
 
-       intro/overview
-       intro/installation
-       intro/tutorial
-       intro/examples
+   intro/overview
+   intro/installation
+   intro/tutorial
+   intro/examples
 
 :doc:`intro/overview`
     Understand what Scrapy-Cookies is and how it can help you.
@@ -58,12 +58,12 @@ Basic concepts
 ==============
 
 .. toctree::
-:caption: Basic concepts
-       :hidden:
+   :caption: Basic concepts
+   :hidden:
 
-       topics/cookiesmiddleware
-       topics/storages
-       topics/settings
+   topics/cookiesmiddleware
+   topics/storage
+   topics/settings
 
 
 :doc:`topics/cookiesmiddleware`
@@ -83,32 +83,11 @@ Extending Scrapy-Cookies
 ========================
 
 .. toctree::
-:caption: Extending Scrapy-Cookies
-       :hidden:
+   :caption: Extending Scrapy-Cookies
+   :hidden:
 
-       topics/storage
+   topics/storage
 
 
 :doc:`topics/storage`
     Customize how the storage save, restore and share the cookies
-
-
-All the rest
-============
-
-.. toctree::
-:caption: All the rest
-       :hidden:
-
-       news
-       contributing
-       versioning
-
-:doc:`news`
-    See what has changed in recent Scrapy versions.
-
-:doc:`contributing`
-    Learn how to contribute to the Scrapy project.
-
-:doc:`versioning`
-    Understand Scrapy versioning and API stability.

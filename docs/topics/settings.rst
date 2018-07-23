@@ -34,7 +34,7 @@ container will save the cookies in the file ``cookies`` under the folder
 ``.scrapy`` in your project, while if the storage does not use memory as cookies
 container will not affect by this setting.
 
-.. settings:: COOKIES_STORAGE
+.. setting:: COOKIES_STORAGE
 
 COOKIES_STORAGE
 ~~~~~~~~~~~~~~~

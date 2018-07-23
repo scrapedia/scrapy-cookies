@@ -10,7 +10,7 @@ def _py_files(folder):
 
 collect_ignore = [
     # deprecated or moved modules
-    "scrapy/conf.py",
+    "scrapy/conf.py.bak",
     "scrapy/log.py",
 
     # not a test, but looks like a test

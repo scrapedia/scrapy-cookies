@@ -65,8 +65,8 @@ globally installed actually helps here), it should be a matter of running::
 Check this `user guide`_ on how to create your virtualenv.
 
 .. note::
-If you use Linux or OS X, `virtualenvwrapper`_ is a handy tool to create
-virtualenvs.
+    If you use Linux or OS X, `virtualenvwrapper`_ is a handy tool to create
+    virtualenvs.
 
 Once you have created a virtualenv, you can install Scrapy-Cookies inside it
 with ``pip``, just like any other Python package.
