@@ -61,6 +61,6 @@ deploy:
     secure: XUWX6thYjEFc5nyWVXu0hMM46H75Q7wPqb+rGwKmLmtlO4fxLtjTqrKDM9KVieP0+IH6yMoHqXXNteLQBiy9L79NE7/0Lx715fTFYCdRAC4DkYhEp6/CN3jjTewIMVB303H0HY6a6+oPafRjHV9tdGJL5tY9xB8ZvK9wa9CS5uwZthMQrjOcfTnxRS3WiGyEH56KmqqSZsG1gd0gaxm7In59FLwQAqRAbyX8Uj1saLWeyUPe3epkJ8lGwnQcJ7lalF0Wmxp+DPpr6yYUa91PLKVr8u06ifZksozi3P/rhyucMArSAVDn8fGU4+RgW7+i/KuSLVbnobqfpAi90DxvqDlaA9xvVcxtg30oUP1LUapQJrXnmvs6aHpwoR6dmVjNgSE8It3NwOjxQbUw2i0C4YKm6VHQqvCacQb4MdQJ0eOzIIDm0z0epMGKFYWSYiWf3LRRTWAkvl4pY/tewGqBnNGStgfwcDymRHfYETeF+GISFvAkGGc4/GJdLiJD6UJr4UiGQBawAGdJH1cCwn9qqP1mTFC5EY4jHYNDMAbWow+EdhcB9vaeB3r88jgZqKXctZ6s7wOLA4JLdXOJQIS584ym1r0CV5dTxgO0g5pvZzx07mu3GuSBhw6TjECn0lGpQGYr8Wk5zDJSF4OHH0Zc7LbTQQMLghtgRioYsOwhodQ=
   on:
     branch: master
-#    tags: true
+    tags: true
     repo: grammy-jiang/scrapy-cookies
-    condition: "$TOXENV == py27"
+    condition: "$TOXENV == py27 && $TRAVIS_TAG =~ ^[0-9]+[.][0-9]+[.][0-9]+(rc[0-9]+|[.]dev[0-9]+)?$"
