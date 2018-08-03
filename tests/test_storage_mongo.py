@@ -18,10 +18,7 @@ class MongoStorageTest(TestCase):
         'COOKIES_MONGO_MONGOCLIENT_DOCUMENT_CLASS': dict,
         'COOKIES_MONGO_MONGOCLIENT_TZ_AWARE': False,
         'COOKIES_MONGO_MONGOCLIENT_CONNECT': True,
-        'COOKIES_MONGO_MONGOCLIENT_KWARGS': {
-            'username': 'root',
-            'password': 'xxxxxxxx',
-        },
+        'COOKIES_MONGO_MONGOCLIENT_KWARGS': {},
         'COOKIES_MONGO_DATABASE': 'cookies',
         'COOKIES_MONGO_COLLECTION': 'cookies',
     }
