@@ -53,14 +53,14 @@ notifications:
 cache:
   directories:
     - $HOME/.cache/pip
-#deploy:
-#  provider: pypi
-#  distributions: sdist bdist_wheel
-#  user: grammy.jiang
-#  password:
-#    secure: B6SUBP33G9lP1F90AgrEODnVjGefPfzwnEdFdW7Gsafn5pIqQr1i5eTcK76iPOkLd0sMdD1XV1zDNssU97yBPg2LaN0daBz3UoEs11PZzxLDmiMy5XPosZa+ReaRdpnI6d0xE3FSQRDYv/zH6xOHBUck6BBOQ1GrhpUNjrs9P6ZVx9s12vk6dHNW/aZm/PLvkeGooOjjjjiiqDmdMWB/KWQa7ZgdGvhAvfE25Y3clgu2pDxMAGs24W4uf6oMXu/6RgTnt1BnxUfJ5uxgb/ohLrYNloFqvDAd2pJ+ZkWAasx/SuMDRv3uQ6lwP5t/czy58aGSgEWXrNjrfddKXEdQMAJyTeFKz4ef5UxpzxebDRgfD1d1B0Q8pSHAfNqQrZwz8YoRBgER6Axtjkw8QTV67D73oceOut+PY8FW8zu0nzjgpQzj4iC8b6OBiC6zkCIfybRBu0yEqmYs/BVGlEf3jvNqrqQDAYN/dGdvN/yIug1gMUACWBSRWZhtMjWqws9CPVhFgmDKxZnPyyyFa+q9gImS5WtWkCHtKz5KvbiBioyfofIxBdKpGgnZZTvOu3NXQdgB+KaRLbll1sFjjLCqmJOzr3XloYJ0hjCKE4bY4w9EX9s/ac6V9uyVX7rO2j2VReXnAgLJV1A75bWmnUV5K1WJDa/KoADJg1c+1E1l9Vs=
-#  on:
-#    branch: master
-#    tags: true
-#    repo: grammy-jiang/scrapy-cookies
-#    condition: "$TOXENV == py27 && $TRAVIS_TAG =~ ^[0-9]+[.][0-9]+[.][0-9]+(rc[0-9]+|[.]dev[0-9]+)?$"
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: grammy.jiang
+  password:
+    secure: B6SUBP33G9lP1F90AgrEODnVjGefPfzwnEdFdW7Gsafn5pIqQr1i5eTcK76iPOkLd0sMdD1XV1zDNssU97yBPg2LaN0daBz3UoEs11PZzxLDmiMy5XPosZa+ReaRdpnI6d0xE3FSQRDYv/zH6xOHBUck6BBOQ1GrhpUNjrs9P6ZVx9s12vk6dHNW/aZm/PLvkeGooOjjjjiiqDmdMWB/KWQa7ZgdGvhAvfE25Y3clgu2pDxMAGs24W4uf6oMXu/6RgTnt1BnxUfJ5uxgb/ohLrYNloFqvDAd2pJ+ZkWAasx/SuMDRv3uQ6lwP5t/czy58aGSgEWXrNjrfddKXEdQMAJyTeFKz4ef5UxpzxebDRgfD1d1B0Q8pSHAfNqQrZwz8YoRBgER6Axtjkw8QTV67D73oceOut+PY8FW8zu0nzjgpQzj4iC8b6OBiC6zkCIfybRBu0yEqmYs/BVGlEf3jvNqrqQDAYN/dGdvN/yIug1gMUACWBSRWZhtMjWqws9CPVhFgmDKxZnPyyyFa+q9gImS5WtWkCHtKz5KvbiBioyfofIxBdKpGgnZZTvOu3NXQdgB+KaRLbll1sFjjLCqmJOzr3XloYJ0hjCKE4bY4w9EX9s/ac6V9uyVX7rO2j2VReXnAgLJV1A75bWmnUV5K1WJDa/KoADJg1c+1E1l9Vs=
+  on:
+    branch: master
+    tags: true
+    repo: grammy-jiang/scrapy-cookies
+    condition: "$TOXENV == py27 && $TRAVIS_TAG =~ ^[0-9]+[.][0-9]+[.][0-9]+(rc[0-9]+|[.]dev[0-9]+)?$"
