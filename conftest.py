@@ -8,15 +8,7 @@ def _py_files(folder):
     return glob.glob(folder + "/*.py") + glob.glob(folder + "/*/*.py")
 
 
-collect_ignore = [
-    # deprecated or moved modules
-    "scrapy/conf.py.bak",
-    "scrapy/log.py",
-
-    # not a test, but looks like a test
-    "scrapy/utils/testsite.py",
-
-]
+collect_ignore = []
 
 if (twisted_version.major, twisted_version.minor, twisted_version.micro) >= (15, 5, 0):
     collect_ignore += _py_files("scrapy/xlib/tx")

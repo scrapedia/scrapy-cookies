@@ -42,7 +42,7 @@ The quick way:
 
    pip install scrapy-cookies
 
-For more details see the install section in the documentation:
+For more details see the installation section in the documentation:
 https://scrapy-cookies.readthedocs.io/en/latest/intro/installation.html
 
 Documentation

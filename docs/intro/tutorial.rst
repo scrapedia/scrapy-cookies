@@ -25,11 +25,30 @@ Before you start scraping, just put the following code into your settings.py::
 
 With the default settings of this middleware, a in-memory storage will be used.
 
-There is also another storage named SQLiteStorage. If you want to use it instead
-of the in-memory one, simple put the following code below the previous one::
+There is a storage named SQLiteStorage. If you want to use it instead of the
+in-memory one, simple put the following code below the previous one::
 
     COOKIES_STORAGE = 'scrapy_cookies.storage.sqlite.SQLiteStorage'
     COOKIES_SQLITE_DATABASE = ':memory:'
+
+There is also one storage named MongoStorage. If you want to use it instead of
+the in-memory one, simple put the following code below the previous one::
+
+    COOKIES_STORAGE = 'scrapy_cookies.storage.mongo.MongoStorage'
+
+    COOKIES_MONGO_MONGOCLIENT_HOST = 'localhost'
+    COOKIES_MONGO_MONGOCLIENT_PORT = 27017
+    COOKIES_MONGO_MONGOCLIENT_DOCUMENT_CLASS = dict
+    COOKIES_MONGO_MONGOCLIENT_TZ_AWARE = False
+    COOKIES_MONGO_MONGOCLIENT_CONNECT = True
+
+    COOKIES_MONGO_MONGOCLIENT_KWARGS = {
+        'username': 'username',
+        'password': 'password',
+    }
+
+    COOKIES_MONGO_DATABASE = 'cookies'
+    COOKIES_MONGO_COLLECTION = 'cookies'
 
 When you implement your own storage, you can set ``COOKIES_STORAGE`` to your own
 one.
@@ -39,8 +58,8 @@ Save cookies and restore in your next run
 =========================================
 
 By default this middleware would not save the cookies. When you need to keep
-the cookies, for example a login cookie, you wish to save the cookies on disk
-for next run.
+the cookies for further usage, for example a login cookie, you wish to save the
+cookies on disk for next run.
 
 This middleware provides this ability with one setting::
 
@@ -58,6 +77,7 @@ the next run.
   cookies and restore them. The cookies persistence file is not compatible
   between different storage classes.
 
+.. note:: This feature will depend on the storage class used
 
 Next steps
 ==========

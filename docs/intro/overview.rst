@@ -46,11 +46,11 @@ cookies from your spider.
 What just happened?
 -------------------
 
-When you ran your spider, this middleware will initialize all related objects
-related with containing cookies.
+When you run your spider, this middleware initializes all objects related to
+maintaining cookies.
 
-The crawl started to send requests, receive responses, at the same time this
-middleware extract and set the cookies to them.
+The crawl starts to send requests and receive responses, at the same time this
+middleware extracts and sets the cookies from and to requests and responses.
 
 When the spider stopped, this middleware will save the cookies to the path
 defined in ``COOKIES_PERSISTENCE_DIR``.

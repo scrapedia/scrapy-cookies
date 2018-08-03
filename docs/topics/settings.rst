@@ -46,3 +46,55 @@ provided with this middleware by default:
 
 * :ref:`scrapy_cookies.storage.in_memory.InMemoryStorage<storage-inmemory>`
 * :ref:`scrapy_cookies.storage.sqlite.SQLiteStorage<storage-sqlite>`
+* :ref:`scrapy_cookies.storage.mongo.MongoStorage<storage-mongo>`
+
+.. setting:: COOKIES_MONGO_MONGOCLIENT_HOST
+
+COOKIES_MONGO_MONGOCLIENT_HOST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please refer to mongo_client_.
+
+.. setting:: COOKIES_MONGO_MONGOCLIENT_PORT
+
+COOKIES_MONGO_MONGOCLIENT_PORT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please refer to mongo_client_.
+
+.. setting:: COOKIES_MONGO_MONGOCLIENT_DOCUMENT_CLASS
+
+COOKIES_MONGO_MONGOCLIENT_DOCUMENT_CLASS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please refer to mongo_client_.
+
+.. setting:: COOKIES_MONGO_MONGOCLIENT_TZ_AWARE
+
+COOKIES_MONGO_MONGOCLIENT_TZ_AWARE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please refer to mongo_client_.
+
+.. setting:: COOKIES_MONGO_MONGOCLIENT_CONNECT
+
+COOKIES_MONGO_MONGOCLIENT_CONNECT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please refer to mongo_client_.
+
+.. setting:: COOKIES_MONGO_MONGOCLIENT_KWARGS
+
+COOKIES_MONGO_MONGOCLIENT_KWARGS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please refer to mongo_client_.
+
+.. setting:: COOKIES_MONGO_DATABASE
+
+COOKIES_MONGO_DATABASE
+~~~~~~~~~~~~~~~~~~~~~~
+Please refer to mongo_client_.
+
+.. setting:: COOKIES_MONGO_COLLECTION
+
+COOKIES_MONGO_COLLECTION
+~~~~~~~~~~~~~~~~~~~~~~~~
+Please refer to mongo_client_.
+
+
+.. _mongo_client: http://api.mongodb.com/python/current/api/pymongo/mongo_client.html#pymongo.mongo_client.MongoClient
