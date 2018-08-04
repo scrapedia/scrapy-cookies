@@ -52,49 +52,94 @@ provided with this middleware by default:
 
 COOKIES_MONGO_MONGOCLIENT_HOST
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Default: ``localhost``
+
+Hostname or IP address or Unix domain socket path of a single mongod or mongos
+instance to connect to, or a mongodb URI, or a list of hostnames / mongodb URIs.
+If host is an IPv6 literal it must be enclosed in ‘[‘ and ‘]’ characters
+following the RFC2732 URL syntax (e.g. ‘[::1]’ for localhost). Multihomed and
+round robin DNS addresses are not supported.
+
 Please refer to mongo_client_.
 
 .. setting:: COOKIES_MONGO_MONGOCLIENT_PORT
 
 COOKIES_MONGO_MONGOCLIENT_PORT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Default: ``27017``
+
+Port number on which to connect.
+
 Please refer to mongo_client_.
 
 .. setting:: COOKIES_MONGO_MONGOCLIENT_DOCUMENT_CLASS
 
 COOKIES_MONGO_MONGOCLIENT_DOCUMENT_CLASS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Default: ``dict``
+
+Default class to use for documents returned from queries on this client.
+
 Please refer to mongo_client_.
 
 .. setting:: COOKIES_MONGO_MONGOCLIENT_TZ_AWARE
 
 COOKIES_MONGO_MONGOCLIENT_TZ_AWARE
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Default: ``False``
+
+If True, datetime instances returned as values in a document by this MongoClient
+will be timezone aware (otherwise they will be naive).
+
 Please refer to mongo_client_.
 
 .. setting:: COOKIES_MONGO_MONGOCLIENT_CONNECT
 
 COOKIES_MONGO_MONGOCLIENT_CONNECT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Default: ``True``
+
+If True (the default), immediately begin connecting to MongoDB in the
+background. Otherwise connect on the first operation.
+
 Please refer to mongo_client_.
 
 .. setting:: COOKIES_MONGO_MONGOCLIENT_KWARGS
 
 COOKIES_MONGO_MONGOCLIENT_KWARGS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Please refer to mongo_client_.
 
 .. setting:: COOKIES_MONGO_DATABASE
 
 COOKIES_MONGO_DATABASE
 ~~~~~~~~~~~~~~~~~~~~~~
-Please refer to mongo_client_.
+
+Default: ``cookies``
+
+The name of the database - a string. If None (the default) the database named in
+the MongoDB connection URI is returned.
+
+Please refer to get_database_.
 
 .. setting:: COOKIES_MONGO_COLLECTION
 
 COOKIES_MONGO_COLLECTION
 ~~~~~~~~~~~~~~~~~~~~~~~~
-Please refer to mongo_client_.
+
+Default: ``cookies``
+
+The name of the collection - a string.
+
+Please refer to get_collection_.
 
 
 .. _mongo_client: http://api.mongodb.com/python/current/api/pymongo/mongo_client.html#pymongo.mongo_client.MongoClient
+.. _get_database: http://api.mongodb.com/python/current/api/pymongo/mongo_client.html#pymongo.mongo_client.MongoClient.get_database
+.. _get_collection: http://api.mongodb.com/python/current/api/pymongo/database.html#pymongo.database.Database.get_collection
