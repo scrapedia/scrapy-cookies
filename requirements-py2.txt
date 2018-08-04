@@ -1,2 +1,4 @@
+hiredis
 pymongo
+redis
 scrapy
