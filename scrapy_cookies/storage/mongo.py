@@ -1,16 +1,16 @@
 import logging
 import pickle
-import pymongo
 import re
 from itertools import starmap
 
+import pymongo
 from pymongo import MongoClient
 from scrapy.http.cookies import CookieJar
 
 from scrapy_cookies.storage import BaseStorage
 
 logger = logging.getLogger(__name__)
-pattern = re.compile('^COOKIES_MONGO_MONGOCLIENT_')
+pattern = re.compile('^COOKIES_MONGO_MONGOCLIENT_(?P<kwargs>(?!KWARGS).*)$')
 
 
 def get_arguments(var):
@@ -32,12 +32,13 @@ class MongoStorage(BaseStorage):
     def __init__(self, settings):
         super(MongoStorage, self).__init__(settings)
         self.mongo_settings = dict(starmap(
-            lambda k, v: (
-                k.replace('COOKIES_MONGO_MONGOCLIENT_', '').lower(), v),
+            lambda k, v: (pattern.sub(lambda x: x.group(1).lower(), k), v),
             filter(lambda pair: pattern.match(pair[0]),
                    settings.copy_to_dict().items())
         ))
-        self.mongo_settings.update(self.mongo_settings.pop('kwargs'))
+        self.mongo_settings.update(
+            self.settings['COOKIES_MONGO_MONGOCLIENT_KWARGS']
+        )
         self.client = None
         self.db = None
         self.coll = None
