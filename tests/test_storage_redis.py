@@ -8,7 +8,7 @@ from scrapy.http.cookies import CookieJar
 from scrapy.settings import Settings
 
 from scrapy_cookies.settings import default_settings
-from scrapy_cookies.storage.redis import RedisStorage
+from scrapy_cookies.storage.redis_ import RedisStorage
 
 
 class RedisStorageTest(TestCase):

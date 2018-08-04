@@ -3,8 +3,8 @@ import pickle
 import re
 from itertools import starmap
 
-import redis
 import ujson
+from redis.client import Redis
 from scrapy.http.cookies import CookieJar
 
 from scrapy_cookies.storage import BaseStorage
@@ -44,7 +44,7 @@ class RedisStorage(BaseStorage):
         return cls(middleware.settings)
 
     def open_spider(self, spider):
-        self.r = redis.Redis(**self.redis_settings)
+        self.r = Redis(**self.redis_settings)
 
     def close_spider(self, spider):
         pass

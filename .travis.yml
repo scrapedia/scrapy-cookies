@@ -1,7 +1,7 @@
 language: python
 services:
     - mongodb
-    - reids-server
+    - redis-server
 sudo: false
 branches:
   only:
