@@ -28,6 +28,9 @@ Scrapy-Cookies is written in pure Python and depends on a few key Python
 packages (among others):
 
 * `Scrapy`_, of course
+* `PyMongo`_
+* `redis-py`_
+* `ujson`_
 
 The minimal versions which Scrapy-Cookies is tested against are:
 
@@ -37,6 +40,9 @@ Scrapy-Cookies may work with older versions of these packages but it is not
 guaranteed it will continue working because it’s not being tested against them.
 
 .. _Scrapy: https://scrapy.org/
+.. _PyMongo: http://api.mongodb.com/python/current/
+.. _redis-py: https://redis-py.readthedocs.io/en/latest/
+.. _ujson: https://github.com/esnme/ultrajson
 
 
 .. _intro-using-virtualenv:

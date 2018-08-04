@@ -64,3 +64,41 @@ The following settings can be used to configure this storage:
 * :setting:`COOKIES_MONGO_MONGOCLIENT_KWARGS`
 * :setting:`COOKIES_MONGO_DATABASE`
 * :setting:`COOKIES_MONGO_COLLECTION`
+
+.. _storage-redis:
+
+RedisStorage
+------------
+
+.. module:: scrapy_cookies.storage.redis
+   :synopsis: Redis Storage
+
+.. class:: RedisStorage
+
+   This storage enables keeping cookies in Redis.
+
+The following settings can be used to configure this storage:
+
+* :setting:`COOKIES_REDIS_HOST`
+* :setting:`COOKIES_REDIS_PORT`
+* :setting:`COOKIES_REDIS_DB`
+* :setting:`COOKIES_REDIS_PASSWORD`
+* :setting:`COOKIES_REDIS_SOCKET_TIMEOUT`
+* :setting:`COOKIES_REDIS_SOCKET_CONNECT_TIMEOUT`
+* :setting:`COOKIES_REDIS_SOCKET_KEEPALIVE`
+* :setting:`COOKIES_REDIS_SOCKET_KEEPALIVE_OPTIONS`
+* :setting:`COOKIES_REDIS_CONNECTION_POOL`
+* :setting:`COOKIES_REDIS_UNIX_SOCKET_PATH`
+* :setting:`COOKIES_REDIS_ENCODING`
+* :setting:`COOKIES_REDIS_ENCODING_ERRORS`
+* :setting:`COOKIES_REDIS_CHARSET`
+* :setting:`COOKIES_REDIS_ERRORS`
+* :setting:`COOKIES_REDIS_DECODE_RESPONSES`
+* :setting:`COOKIES_REDIS_RETRY_ON_TIMEOUT`
+* :setting:`COOKIES_REDIS_SSL`
+* :setting:`COOKIES_REDIS_SSL_KEYFILE`
+* :setting:`COOKIES_REDIS_SSL_CERTFILE`
+* :setting:`COOKIES_REDIS_SSL_CERT_REQS`
+* :setting:`COOKIES_REDIS_SSL_CA_CERTS`
+* :setting:`COOKIES_REDIS_MAX_CONNECTIONS`
+

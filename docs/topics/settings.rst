@@ -143,3 +143,160 @@ Please refer to get_collection_.
 .. _mongo_client: http://api.mongodb.com/python/current/api/pymongo/mongo_client.html#pymongo.mongo_client.MongoClient
 .. _get_database: http://api.mongodb.com/python/current/api/pymongo/mongo_client.html#pymongo.mongo_client.MongoClient.get_database
 .. _get_collection: http://api.mongodb.com/python/current/api/pymongo/database.html#pymongo.database.Database.get_collection
+
+
+.. setting:: COOKIES_REDIS_HOST
+
+COOKIES_REDIS_HOST
+~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_PORT
+
+COOKIES_REDIS_PORT
+~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_DB
+
+COOKIES_REDIS_DB
+~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_PASSWORD
+
+COOKIES_REDIS_PASSWORD
+~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SOCKET_TIMEOUT
+
+COOKIES_REDIS_SOCKET_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SOCKET_CONNECT_TIMEOUT
+
+COOKIES_REDIS_SOCKET_CONNECT_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SOCKET_KEEPALIVE
+
+COOKIES_REDIS_SOCKET_KEEPALIVE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SOCKET_KEEPALIVE_OPTIONS
+
+COOKIES_REDIS_SOCKET_KEEPALIVE_OPTIONS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_CONNECTION_POOL
+
+COOKIES_REDIS_CONNECTION_POOL
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_UNIX_SOCKET_PATH
+
+COOKIES_REDIS_UNIX_SOCKET_PATH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_ENCODING
+
+COOKIES_REDIS_ENCODING
+~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_ENCODING_ERRORS
+
+COOKIES_REDIS_ENCODING_ERRORS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_CHARSET
+
+COOKIES_REDIS_CHARSET
+~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_ERRORS
+
+COOKIES_REDIS_ERRORS
+~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_DECODE_RESPONSES
+
+COOKIES_REDIS_DECODE_RESPONSES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_RETRY_ON_TIMEOUT
+
+COOKIES_REDIS_RETRY_ON_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SSL
+
+COOKIES_REDIS_SSL
+~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SSL_KEYFILE
+
+COOKIES_REDIS_SSL_KEYFILE
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SSL_CERTFILE
+
+COOKIES_REDIS_SSL_CERTFILE
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SSL_CERT_REQS
+
+COOKIES_REDIS_SSL_CERT_REQS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_SSL_CA_CERTS
+
+COOKIES_REDIS_SSL_CA_CERTS
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. setting:: COOKIES_REDIS_MAX_CONNECTIONS
+
+COOKIES_REDIS_MAX_CONNECTIONS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Please refer to `redis-py's documentation`_.
+
+.. _redis-py's documentation: https://redis-py.readthedocs.io/en/latest/

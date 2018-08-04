@@ -31,24 +31,8 @@ in-memory one, simple put the following code below the previous one::
     COOKIES_STORAGE = 'scrapy_cookies.storage.sqlite.SQLiteStorage'
     COOKIES_SQLITE_DATABASE = ':memory:'
 
-There is also one storage named MongoStorage. If you want to use it instead of
-the in-memory one, simple put the following code below the previous one::
-
-    COOKIES_STORAGE = 'scrapy_cookies.storage.mongo.MongoStorage'
-
-    COOKIES_MONGO_MONGOCLIENT_HOST = 'localhost'
-    COOKIES_MONGO_MONGOCLIENT_PORT = 27017
-    COOKIES_MONGO_MONGOCLIENT_DOCUMENT_CLASS = dict
-    COOKIES_MONGO_MONGOCLIENT_TZ_AWARE = False
-    COOKIES_MONGO_MONGOCLIENT_CONNECT = True
-
-    COOKIES_MONGO_MONGOCLIENT_KWARGS = {
-        'username': 'username',
-        'password': 'password',
-    }
-
-    COOKIES_MONGO_DATABASE = 'cookies'
-    COOKIES_MONGO_COLLECTION = 'cookies'
+There are other storage classes provided with this middleware, please refer to
+:ref:`topics-storage`.
 
 When you implement your own storage, you can set ``COOKIES_STORAGE`` to your own
 one.
@@ -77,7 +61,7 @@ the next run.
   cookies and restore them. The cookies persistence file is not compatible
   between different storage classes.
 
-.. note:: This feature will depend on the storage class used
+.. note:: This feature depends on the storage class used.
 
 Next steps
 ==========
