@@ -65,6 +65,7 @@ setup(
         'pymongo',
         'redis',
         'scrapy',
+        'ujson'
     ],
     extras_require=extras_require,
 )
