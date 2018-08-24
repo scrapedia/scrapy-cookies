@@ -8,6 +8,7 @@ from pymongo import MongoClient
 from scrapy.http.cookies import CookieJar
 
 from scrapy_cookies.storage import BaseStorage
+from six.moves.http_cookiejar import Cookie
 
 logger = logging.getLogger(__name__)
 pattern = re.compile('^COOKIES_MONGO_MONGOCLIENT_(?P<kwargs>(?!KWARGS).*)$')
@@ -26,6 +27,28 @@ def read_cookiejar(document):
         return pickle.loads(document['cookiejar'])
     except TypeError:
         return None
+
+
+def convert_cookiejar(cookiejar):
+    def _convert_cookies(x):
+        if isinstance(x, (str, int, bool)):
+            return x
+        elif isinstance(x, Cookie):
+            return dict(map(
+                lambda attr: (attr, getattr(x, attr)),
+                ("version", "name", "value", "port", "port_specified", "domain",
+                 "domain_specified", "domain_initial_dot", "path",
+                 "path_specified", "secure", "expires", "discard", "comment",
+                 "comment_url")
+            ))
+
+        elif isinstance(x, dict):
+            return dict(starmap(
+                lambda k, v: (_convert_cookies(k), _convert_cookies(v)),
+                x.items()
+            ))
+
+    return _convert_cookies(cookiejar._cookies)
 
 
 class MongoStorage(BaseStorage):
@@ -84,6 +107,9 @@ class MongoStorage(BaseStorage):
         return self.coll.count_documents({})
 
     def __setitem__(self, k, v):
-        self.coll.insert_one({
-            'key': k, 'cookiejar': write_cookiejar(v), 'cookies': v._cookies
-        })
+        self.coll.update_one(
+            {'key': k},
+            {'$set': {'key': k, 'cookiejar': write_cookiejar(v),
+                      'cookies': convert_cookiejar(v)}},
+            upsert=True
+        )

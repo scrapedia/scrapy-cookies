@@ -2,4 +2,5 @@ hiredis
 pymongo
 redis
 scrapy
+six
 ujson
