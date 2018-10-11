@@ -18,7 +18,7 @@ COOKIES_STORAGE = 'scrapy_cookies.storage.in_memory.InMemoryStorage'
 COOKIES_SQLITE_DATABASE = ':memory:'
 
 # ------------------------------------------------------------------------------
-# Mongo
+# MONGODB
 # ------------------------------------------------------------------------------
 
 # http://api.mongodb.com/python/current/api/pymongo/mongo_client.html#pymongo.mongo_client.MongoClient
