@@ -10,16 +10,16 @@ Scrapy Cookies
    :target: https://pypi.python.org/pypi/scrapy-cookies
    :alt: PyPI - Python Version
 
-.. image:: https://img.shields.io/travis/grammy-jiang/scrapy-cookies/master.svg
-   :target: http://travis-ci.org/grammy-jiang/scrapy-cookies
+.. image:: https://img.shields.io/travis/scrapedia/scrapy-cookies/master.svg
+   :target: http://travis-ci.org/scrapedia/scrapy-cookies
    :alt: Travis branch
 
 .. image:: https://img.shields.io/pypi/wheel/scrapy-cookies.svg
    :target: https://pypi.python.org/pypi/scrapy-cookies
    :alt: PyPI - Wheel
 
-.. image:: https://img.shields.io/codecov/c/github/grammy-jiang/scrapy-cookies/master.svg
-   :target: http://codecov.io/github/grammy-jiang/scrapy-cookies?branch=master
+.. image:: https://img.shields.io/codecov/c/github/scrapedia/scrapy-cookies/master.svg
+   :target: http://codecov.io/github/scrapedia/scrapy-cookies?branch=master
    :alt: Codecov branch
 
 Overview
