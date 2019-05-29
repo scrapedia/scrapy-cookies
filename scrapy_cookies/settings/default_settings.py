@@ -2,20 +2,20 @@ COOKIES_ENABLED = True
 COOKIES_DEBUG = False
 
 COOKIES_PERSISTENCE = False
-COOKIES_PERSISTENCE_DIR = 'cookies'
+COOKIES_PERSISTENCE_DIR = "cookies"
 
 # ------------------------------------------------------------------------------
 # IN MEMORY STORAGE
 # ------------------------------------------------------------------------------
 
-COOKIES_STORAGE = 'scrapy_cookies.storage.in_memory.InMemoryStorage'
+COOKIES_STORAGE = "scrapy_cookies.storage.in_memory.InMemoryStorage"
 
 # ------------------------------------------------------------------------------
 # SQLITE STORAGE
 # ------------------------------------------------------------------------------
 
 # COOKIES_STORAGE = 'scrapy_cookies.storage.sqlite.SQLiteStorage'
-COOKIES_SQLITE_DATABASE = ':memory:'
+COOKIES_SQLITE_DATABASE = ":memory:"
 
 # ------------------------------------------------------------------------------
 # MONGODB
@@ -24,7 +24,7 @@ COOKIES_SQLITE_DATABASE = ':memory:'
 # http://api.mongodb.com/python/current/api/pymongo/mongo_client.html#pymongo.mongo_client.MongoClient
 
 # COOKIES_STORAGE = 'scrapy_cookies.storage.mongo.MongoStorage'
-COOKIES_MONGO_MONGOCLIENT_HOST = 'localhost'
+COOKIES_MONGO_MONGOCLIENT_HOST = "localhost"
 COOKIES_MONGO_MONGOCLIENT_PORT = 27017
 COOKIES_MONGO_MONGOCLIENT_DOCUMENT_CLASS = dict
 COOKIES_MONGO_MONGOCLIENT_TZ_AWARE = False
@@ -37,7 +37,7 @@ COOKIES_MONGO_MONGOCLIENT_KWARGS = {
     # 'authMechanism': 'SCRAM_SHA-1',
 }
 
-COOKIES_MONGO_DATABASE = 'cookies'
+COOKIES_MONGO_DATABASE = "cookies"
 # or
 # COOKIES_MONGO_DATABASE = {
 #     'name': 'cookies',
@@ -47,7 +47,7 @@ COOKIES_MONGO_DATABASE = 'cookies'
 #     'read_concern': None
 # }
 
-COOKIES_MONGO_COLLECTION = 'cookies'
+COOKIES_MONGO_COLLECTION = "cookies"
 # or
 # COOKIES_MONGO_COLLECTION = {
 #     'name': 'cookies',
@@ -62,7 +62,7 @@ COOKIES_MONGO_COLLECTION = 'cookies'
 # ------------------------------------------------------------------------------
 
 # COOKIES_STORAGE = 'scrapy_cookies.storage.redis.RedisStorage'
-COOKIES_REDIS_HOST = 'localhost'
+COOKIES_REDIS_HOST = "localhost"
 COOKIES_REDIS_PORT = 6379
 COOKIES_REDIS_DB = 0
 COOKIES_REDIS_PASSWORD = None
@@ -72,8 +72,8 @@ COOKIES_REDIS_SOCKET_KEEPALIVE = None
 COOKIES_REDIS_SOCKET_KEEPALIVE_OPTIONS = None
 COOKIES_REDIS_CONNECTION_POOL = None
 COOKIES_REDIS_UNIX_SOCKET_PATH = None
-COOKIES_REDIS_ENCODING = 'utf-8'
-COOKIES_REDIS_ENCODING_ERRORS = 'strict'
+COOKIES_REDIS_ENCODING = "utf-8"
+COOKIES_REDIS_ENCODING_ERRORS = "strict"
 COOKIES_REDIS_CHARSET = None
 COOKIES_REDIS_ERRORS = None
 COOKIES_REDIS_DECODE_RESPONSES = True

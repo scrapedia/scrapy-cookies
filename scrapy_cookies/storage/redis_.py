@@ -10,21 +10,23 @@ from scrapy.http.cookies import CookieJar
 from scrapy_cookies.storage import BaseStorage
 
 logger = logging.getLogger(__name__)
-pattern = re.compile('^COOKIES_REDIS_(?P<kwargs>(?!KWARGS).*)$')
+pattern = re.compile("^COOKIES_REDIS_(?P<kwargs>(?!KWARGS).*)$")
 
 
 def get_arguments(var):
-    return {str: {'name': var}, dict: var}[type(var)]
+    return {str: {"name": var}, dict: var}[type(var)]
 
 
 def write_cookiejar(cookiejar):
-    return {'cookiejar': pickle.dumps(cookiejar),
-            'cookies': ujson.dumps(cookiejar._cookies)}
+    return {
+        "cookiejar": pickle.dumps(cookiejar),
+        "cookies": ujson.dumps(cookiejar._cookies),
+    }
 
 
 def read_cookiejar(document):
     try:
-        return pickle.loads(document['cookiejar'])
+        return pickle.loads(document["cookiejar"])
     except (TypeError, KeyError):
         return None
 
@@ -32,11 +34,14 @@ def read_cookiejar(document):
 class RedisStorage(BaseStorage):
     def __init__(self, settings):
         super(RedisStorage, self).__init__(settings)
-        self.redis_settings = dict(starmap(
-            lambda k, v: (pattern.sub(lambda x: x.group(1).lower(), k), v),
-            filter(lambda pair: pattern.match(pair[0]),
-                   settings.copy_to_dict().items())
-        ))
+        self.redis_settings = dict(
+            starmap(
+                lambda k, v: (pattern.sub(lambda x: x.group(1).lower(), k), v),
+                filter(
+                    lambda pair: pattern.match(pair[0]), settings.copy_to_dict().items()
+                ),
+            )
+        )
         self.r = None
 
     @classmethod
