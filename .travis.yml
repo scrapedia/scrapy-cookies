@@ -10,40 +10,15 @@ branches:
     - /^\d\.\d+\.\d+(rc\d+|\.dev\d+)?$/
 matrix:
   include:
-    - python: 2.7
-      env: TOXENV=py27
-    - python: 2.7
-      env: TOXENV=jessie
-    - python: 2.7
-      env: TOXENV=pypy
-    - python: 2.7
-      env: TOXENV=pypy3
-    - python: 3.4
-      env: TOXENV=py34
-    - python: 3.5
-      env: TOXENV=py35
     - python: 3.6
       env: TOXENV=py36
+    - python: 3.7
+      env: TOXENV=py37
+      dist: xenial
     - python: 3.6
       env: TOXENV=docs
 install:
-  - |
-      if [ "$TOXENV" = "pypy" ]; then
-        export PYPY_VERSION="pypy-6.0.0-linux_x86_64-portable"
-        wget "https://bitbucket.org/squeaky/portable-pypy/downloads/${PYPY_VERSION}.tar.bz2"
-        tar -jxf ${PYPY_VERSION}.tar.bz2
-        virtualenv --python="$PYPY_VERSION/bin/pypy" "$HOME/virtualenvs/$PYPY_VERSION"
-        source "$HOME/virtualenvs/$PYPY_VERSION/bin/activate"
-      fi
-      if [ "$TOXENV" = "pypy3" ]; then
-        export PYPY_VERSION="pypy3.5-5.9-beta-linux_x86_64-portable"
-        wget "https://bitbucket.org/squeaky/portable-pypy/downloads/${PYPY_VERSION}.tar.bz2"
-        tar -jxf ${PYPY_VERSION}.tar.bz2
-        virtualenv --python="$PYPY_VERSION/bin/pypy3" "$HOME/virtualenvs/$PYPY_VERSION"
-        source "$HOME/virtualenvs/$PYPY_VERSION/bin/activate"
-      fi
   - pip install -U tox twine wheel codecov
-
 script: tox
 after_success:
   - codecov
@@ -54,14 +29,14 @@ notifications:
 cache:
   directories:
     - $HOME/.cache/pip
-deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: grammy.jiang
-  password:
-    secure: nUWjH3+9D9I+Xrsz7isjVKpzXwxlJuWFi2OrWCMSilxUNaMrV/4fA0TShmS40TCxTGSasmApjZgZz+Qu93Z9KlHnP2nmBsEXnqtrrCMIhI52wLFdnMcTCNCutzOiKzVSMK/SvEvRP6+fcWRbsE0n0hVwUZc/Lwz4083OXoMQIuMs3NbVD0rAPcHTBthTwabQjSp8WwYv9wZj/pZQ7qYw+QOe+b8XhQIIA10Oy9rAcyaOGASMsbBithKap91ayj2yRqmM6kb+nwi4aEJo/+XwQuncJWleTOy88Rt+YtoYkDxoHopjwBR2RAoevfq0Y1Mjl9e1mssunzQ053qmXfKAFB77Xn99iR0bmwSwwCtyBgoY/Ed5+wywwNdE6tfNB8/pYXg3z6mTmIwqXCQhn2+ORdD5RFn9RZAV4IoR1z8WRKU6clsVF2Msc9QUsj5wUA7LXkBg4HlVJurZurbFh58ViVTO2aNo6c+7fBiBwbm2aupeB+RlL9kCz14pbJcd89H6ViWByE6O9pFlyNcEt28FaKLIuyWAsAsYOPnj74oYuoV2hZ7y0259ncGX0UsDVzPwaJ/NlQsi4yh2d300mRvOSbiELhBZdABbkN+pgGmE1mlqUkY9GHb070JsOavzedzsuEgBLAaWgTAxeDd9LqFfIE7iFLj+U9v9d73ZtKy4VeE=
-  on:
-    branch: master
-#    tags: true
-    repo: grammy-jiang/scrapy-cookies
-    condition: "$TOXENV == py27"
+#deploy:
+#  provider: pypi
+#  distributions: sdist bdist_wheel
+#  user: grammy.jiang
+#  password:
+#    secure: nUWjH3+9D9I+Xrsz7isjVKpzXwxlJuWFi2OrWCMSilxUNaMrV/4fA0TShmS40TCxTGSasmApjZgZz+Qu93Z9KlHnP2nmBsEXnqtrrCMIhI52wLFdnMcTCNCutzOiKzVSMK/SvEvRP6+fcWRbsE0n0hVwUZc/Lwz4083OXoMQIuMs3NbVD0rAPcHTBthTwabQjSp8WwYv9wZj/pZQ7qYw+QOe+b8XhQIIA10Oy9rAcyaOGASMsbBithKap91ayj2yRqmM6kb+nwi4aEJo/+XwQuncJWleTOy88Rt+YtoYkDxoHopjwBR2RAoevfq0Y1Mjl9e1mssunzQ053qmXfKAFB77Xn99iR0bmwSwwCtyBgoY/Ed5+wywwNdE6tfNB8/pYXg3z6mTmIwqXCQhn2+ORdD5RFn9RZAV4IoR1z8WRKU6clsVF2Msc9QUsj5wUA7LXkBg4HlVJurZurbFh58ViVTO2aNo6c+7fBiBwbm2aupeB+RlL9kCz14pbJcd89H6ViWByE6O9pFlyNcEt28FaKLIuyWAsAsYOPnj74oYuoV2hZ7y0259ncGX0UsDVzPwaJ/NlQsi4yh2d300mRvOSbiELhBZdABbkN+pgGmE1mlqUkY9GHb070JsOavzedzsuEgBLAaWgTAxeDd9LqFfIE7iFLj+U9v9d73ZtKy4VeE=
+#  on:
+#    branch: master
+##    tags: true
+#    repo: grammy-jiang/scrapy-cookies
+#    condition: "$TOXENV == py36"
