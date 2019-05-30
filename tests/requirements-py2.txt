@@ -1,8 +1,0 @@
-# Tests requirements
-
-pytest==2.9.2
-pytest-cov==2.2.1
-pytest-twisted
-testfixtures
-
-# optional for shell wrapper tests
