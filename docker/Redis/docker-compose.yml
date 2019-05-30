@@ -20,7 +20,7 @@ services:
         networks:
             - redis
         ports:
-            - "127.0.0.1:8081:8081"
+            - "127.0.0.1:8181:8081"
         restart: always
         tty: true
 
