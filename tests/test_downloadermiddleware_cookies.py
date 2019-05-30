@@ -13,10 +13,10 @@ from scrapy.http import Request, Response
 from scrapy.settings import Settings
 from scrapy.spiders import Spider
 from scrapy.utils.test import get_crawler
+from testfixtures import LogCapture
 
 from scrapy_cookies.downloadermiddlewares.cookies import CookiesMiddleware
 from scrapy_cookies.settings import default_settings
-from testfixtures import LogCapture
 
 
 class CookiesMiddlewareTest(TestCase):

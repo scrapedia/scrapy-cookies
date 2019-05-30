@@ -1,0 +1,29 @@
+version: "3"
+services:
+    redis:
+        container_name: dc-redis
+        image: redis:latest
+        networks:
+            - redis
+        ports:
+            - "127.0.0.1:6379:6379"
+        restart: always
+        tty: true
+    redis-commander:
+        command: --redis-host redis
+        container_name: dc-redis-commander
+        depends_on:
+            - redis
+        image: tenstartups/redis-commander:latest
+        links:
+            - redis
+        networks:
+            - redis
+        ports:
+            - "127.0.0.1:8081:8081"
+        restart: always
+        tty: true
+
+networks:
+    redis:
+        driver: bridge

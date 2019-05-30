@@ -36,7 +36,6 @@ class RedisStorageTest(TestCase):
                 "cookies": ujson.dumps(cookies._cookies),
             },
         )
-
         self.assertDictEqual(self.storage["new_cookies"]._cookies, cookies._cookies)
 
     def test_missing(self):
@@ -47,15 +46,16 @@ class RedisStorageTest(TestCase):
     def test_setitem(self):
         cookies = CookieJar()
         self.storage["new_cookies"] = cookies
+        _ = self.storage.r.hgetall("new_cookies")
         self.assertDictEqual(
-            pickle.loads(self.storage.r.hgetall("new_cookies")["cookiejar"])._cookies,
+            pickle.loads(self.storage.r.hgetall("new_cookies")[b"cookiejar"])._cookies,
             cookies._cookies,
         )
         self.assertDictEqual(
             self.storage.r.hgetall("new_cookies"),
             {
-                "cookiejar": pickle.dumps(cookies),
-                "cookies": ujson.dumps(cookies._cookies),
+                b"cookiejar": pickle.dumps(cookies),
+                b"cookies": ujson.dumps(cookies._cookies).encode(),
             },
         )
 

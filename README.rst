@@ -100,3 +100,7 @@ TODO
 ====
 
 * [ ] Remove the support lower than python 3.6
+* [ ] Use JSON1 extension in sqlite backend
+* [ ] Update MongoDB backend arguments calling way
+* [ ] Replace pymongo with txmongo in MongoDB backend
+* [ ] Replace redis sync driver with async driver in Redis backend

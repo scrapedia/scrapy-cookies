@@ -1,0 +1,33 @@
+version: "3"
+services:
+  # https://hub.docker.com/_/mongo/
+  mongo:
+    container_name: dc-mongo
+    image: mongo:latest
+    networks:
+      - mongo
+    ports:
+      - "127.0.0.1:27017:27017"
+    restart: always
+    tty: true
+  # https://hub.docker.com/_/mongo-express/
+  mongo-express:
+    container_name: dc-mongodb-express
+    depends_on:
+      - mongo
+    environment:
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_SERVER: mongo
+    image: mongo-express:latest
+    links:
+      - mongo
+    networks:
+      - mongo
+    ports:
+      - "127.0.0.1:8081:8081"
+    restart: always
+    tty: true
+
+networks:
+  mongo:
+    driver: bridge

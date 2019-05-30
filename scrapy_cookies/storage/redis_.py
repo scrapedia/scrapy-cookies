@@ -2,10 +2,13 @@ import logging
 import pickle
 import re
 from itertools import starmap
+from typing import Dict
 
 import ujson
 from redis.client import Redis
 from scrapy.http.cookies import CookieJar
+from scrapy.settings import Settings
+from scrapy.spiders import Spider
 
 from scrapy_cookies.storage import BaseStorage
 
@@ -32,9 +35,9 @@ def read_cookiejar(document):
 
 
 class RedisStorage(BaseStorage):
-    def __init__(self, settings):
+    def __init__(self, settings: Settings):
         super(RedisStorage, self).__init__(settings)
-        self.redis_settings = dict(
+        self.redis_settings: Dict[str, str] = dict(
             starmap(
                 lambda k, v: (pattern.sub(lambda x: x.group(1).lower(), k), v),
                 filter(
@@ -42,28 +45,29 @@ class RedisStorage(BaseStorage):
                 ),
             )
         )
-        self.r = None
+        self.r: Redis = None
 
     @classmethod
     def from_middleware(cls, middleware):
-        return cls(middleware.settings)
+        obj = cls(middleware.settings)
+        return obj
 
-    def open_spider(self, spider):
-        self.r = Redis(**self.redis_settings)
+    def open_spider(self, spider: Spider):
+        self.r: Redis = Redis(**self.redis_settings)
 
-    def close_spider(self, spider):
+    def close_spider(self, spider: Spider):
         pass
 
-    def __missing__(self, k):
-        cookiejar = CookieJar()
+    def __missing__(self, k) -> CookieJar:
+        cookiejar: CookieJar = CookieJar()
         self[k] = cookiejar
         return cookiejar
 
     def __delitem__(self, v):
         self.r.delete(v)
 
-    def __getitem__(self, k):
-        v = read_cookiejar(self.r.hgetall(k))
+    def __getitem__(self, k) -> CookieJar:
+        v: CookieJar = read_cookiejar(self.r.hgetall(k))
         if isinstance(v, CookieJar):
             return v
         if hasattr(self.__class__, "__missing__"):
@@ -73,8 +77,8 @@ class RedisStorage(BaseStorage):
     def __iter__(self):
         return self.r.scan_iter()
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.r.dbsize()
 
-    def __setitem__(self, k, v):
-        self.r.hmset(k, write_cookiejar(v))
+    def __setitem__(self, k, v: CookieJar):
+        self.r.hmset(name=k, mapping=write_cookiejar(v))

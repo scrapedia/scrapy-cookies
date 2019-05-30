@@ -1,12 +1,17 @@
 import logging
 import pickle
 import re
+from http.cookiejar import Cookie
 from itertools import starmap
+from typing import Dict
 
 import pymongo
 from pymongo import MongoClient
+from pymongo.collection import Collection
+from pymongo.database import Database
 from scrapy.http.cookies import CookieJar
-from six.moves.http_cookiejar import Cookie
+from scrapy.settings import Settings
+from scrapy.spiders import Spider
 
 from scrapy_cookies.storage import BaseStorage
 
@@ -18,7 +23,7 @@ def get_arguments(var):
     return {str: {"name": var}, dict: var}[type(var)]
 
 
-def write_cookiejar(cookiejar):
+def write_cookiejar(cookiejar: CookieJar):
     return pickle.dumps(cookiejar)
 
 
@@ -68,9 +73,9 @@ def convert_cookiejar(cookiejar):
 
 
 class MongoStorage(BaseStorage):
-    def __init__(self, settings):
+    def __init__(self, settings: Settings):
         super(MongoStorage, self).__init__(settings)
-        self.mongo_settings = dict(
+        self.mongo_settings: Dict[str, str] = dict(
             starmap(
                 lambda k, v: (pattern.sub(lambda x: x.group(1).lower(), k), v),
                 filter(
@@ -79,38 +84,39 @@ class MongoStorage(BaseStorage):
             )
         )
         self.mongo_settings.update(self.settings["COOKIES_MONGO_MONGOCLIENT_KWARGS"])
-        self.client = None
-        self.db = None
-        self.coll = None
+        self.client: MongoClient = None
+        self.db: Database = None
+        self.coll: Collection = None
 
     @classmethod
     def from_middleware(cls, middleware):
-        return cls(middleware.settings)
+        obj = cls(middleware.settings)
+        return obj
 
-    def open_spider(self, spider):
-        self.client = MongoClient(**self.mongo_settings)
+    def open_spider(self, spider: Spider):
+        self.client: MongoClient = MongoClient(**self.mongo_settings)
 
-        self.db = self.client.get_database(
+        self.db: Database = self.client.get_database(
             **get_arguments(self.settings["COOKIES_MONGO_DATABASE"])
         )
-        self.coll = self.db.get_collection(
+        self.coll: Collection = self.db.get_collection(
             **get_arguments(self.settings["COOKIES_MONGO_COLLECTION"])
         )
         self.coll.create_index([("key", pymongo.ASCENDING)], unique=True)
 
-    def close_spider(self, spider):
+    def close_spider(self, spider: Spider):
         self.client.close()
 
-    def __missing__(self, k):
-        cookiejar = CookieJar()
+    def __missing__(self, k) -> CookieJar:
+        cookiejar: CookieJar = CookieJar()
         self[k] = cookiejar
         return cookiejar
 
     def __delitem__(self, v):
         self.coll.delete_one({})
 
-    def __getitem__(self, k):
-        v = read_cookiejar(self.coll.find_one({"key": k}))
+    def __getitem__(self, k) -> CookieJar:
+        v: CookieJar = read_cookiejar(self.coll.find_one({"key": k}))
         if isinstance(v, CookieJar):
             return v
         if hasattr(self.__class__, "__missing__"):
@@ -120,7 +126,7 @@ class MongoStorage(BaseStorage):
     def __iter__(self):
         return iter(self.coll.find())
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.coll.count_documents({})
 
     def __setitem__(self, k, v):

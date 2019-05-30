@@ -3,8 +3,11 @@ import logging
 import os
 import pickle
 import sqlite3
+from sqlite3 import Connection, Cursor, Row
 
 from scrapy.http.cookies import CookieJar
+from scrapy.settings import Settings
+from scrapy.spiders import Spider
 from scrapy.utils.project import data_path
 
 from scrapy_cookies.storage import BaseStorage
@@ -12,11 +15,11 @@ from scrapy_cookies.storage import BaseStorage
 logger = logging.getLogger(__name__)
 
 
-def adapt_cookiejar(cookiejar):
+def adapt_cookiejar(cookiejar: CookieJar) -> bytes:
     return pickle.dumps(cookiejar)
 
 
-def convert_cookiejar_and_its_key(cookiejar_or_its_key):
+def convert_cookiejar_and_its_key(cookiejar_or_its_key: bytes):
     return pickle.loads(cookiejar_or_its_key)
 
 
@@ -26,19 +29,19 @@ sqlite3.register_converter("cookiejar_key", convert_cookiejar_and_its_key)
 
 
 class SQLiteStorage(BaseStorage):
-    def __init__(self, settings):
+    def __init__(self, settings: Settings):
         super(SQLiteStorage, self).__init__(settings)
-        self.cookies_dir = data_path(settings["COOKIES_PERSISTENCE_DIR"])
-        self.database = settings["COOKIES_SQLITE_DATABASE"]
-        self.conn = None
-        self.cur = None
+        self.cookies_dir: str = data_path(settings["COOKIES_PERSISTENCE_DIR"])
+        self.database: str = settings["COOKIES_SQLITE_DATABASE"]
+        self.conn: Connection = None
+        self.cur: Cursor = None
 
-    def open_spider(self, spider):
-        self.conn = sqlite3.connect(
+    def open_spider(self, spider: Spider):
+        self.conn: Connection = sqlite3.connect(
             self.database, detect_types=sqlite3.PARSE_COLNAMES, isolation_level=None
         )
         self.conn.row_factory = sqlite3.Row
-        self.cur = self.conn.cursor()
+        self.cur: Cursor = self.conn.cursor()
         if self.database == ":memory:":
             if self.settings["COOKIES_PERSISTENCE"] and os.path.isfile(
                 self.cookies_dir
@@ -52,7 +55,7 @@ class SQLiteStorage(BaseStorage):
             ")"
         )
 
-    def close_spider(self, spider):
+    def close_spider(self, spider: Spider):
         if self.database == ":memory:" and self.settings["COOKIES_PERSISTENCE"]:
             with open(self.cookies_dir, "w") as f:
                 for line in self.conn.iterdump():
@@ -62,8 +65,8 @@ class SQLiteStorage(BaseStorage):
     def __delitem__(self, v):
         self.cur.execute("DELETE FROM cookies WHERE cookiejar_key=?", pickle.dumps(v))
 
-    def __getitem__(self, k):
-        result = self.cur.execute(
+    def __getitem__(self, k) -> CookieJar:
+        result: Row = self.cur.execute(
             'SELECT cookiejar as "cookiejar [CookieJar]" '
             "FROM cookies "
             "WHERE cookiejar_key=?",
@@ -83,21 +86,21 @@ class SQLiteStorage(BaseStorage):
             ).fetchall()
         )
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.cur.execute("SELECT COUNT(*) FROM cookies").fetchone()[0]
 
-    def __setitem__(self, k, v):
+    def __setitem__(self, k, v: CookieJar) -> None:
         self.cur.execute(
             "INSERT OR REPLACE INTO cookies (cookiejar_key, cookiejar, str) VALUES (?, ?, ?)",
             (pickle.dumps(k), v, str(k)),
         )
 
-    def __missing__(self, k):
-        v = CookieJar()
+    def __missing__(self, k) -> CookieJar:
+        v: CookieJar = CookieJar()
         self.__setitem__(k, v)
         return v
 
-    def __contains__(self, k):
+    def __contains__(self, k) -> bool:
         self.cur.execute(
             'SELECT cookiejar as "cookiejar [CookieJar]" '
             "FROM cookies "
