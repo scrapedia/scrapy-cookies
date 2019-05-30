@@ -95,3 +95,8 @@ Commercial Support
 *Keeping this section same as Scrapy is intending to benefit back to Scrapy.*
 
 See https://scrapy.org/support/
+
+TODO
+====
+
+* [ ] Remove the support lower than python 3.6

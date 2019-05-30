@@ -1,20 +1,26 @@
 from collections import MutableMapping
 
+from scrapy.settings import Settings
+from scrapy.spiders import Spider
+
+from scrapy_cookies.downloadermiddlewares.cookies import CookiesMiddleware
+
 
 class BaseStorage(MutableMapping):
     name = None
 
-    def __init__(self, settings):
-        self.settings = settings
+    def __init__(self, settings: Settings):
+        self.settings: Settings = settings
 
     @classmethod
-    def from_middleware(cls, middleware):
-        return cls(middleware.settings)
+    def from_middleware(cls, middleware: CookiesMiddleware):
+        obj = cls(middleware.settings)
+        return obj
 
-    def open_spider(self, spider):
+    def open_spider(self, spider: Spider):
         pass
 
-    def close_spider(self, spider):
+    def close_spider(self, spider: Spider):
         pass
 
     def __delitem__(self, v):
