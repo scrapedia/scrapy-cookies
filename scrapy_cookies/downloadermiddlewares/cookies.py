@@ -2,12 +2,12 @@ import logging
 from http.cookiejar import Cookie
 from typing import Dict, List
 
-from scrapy import signals
 from scrapy.crawler import Crawler
 from scrapy.exceptions import NotConfigured
 from scrapy.http import Request, Response
 from scrapy.http.cookies import CookieJar
 from scrapy.settings import SETTINGS_PRIORITIES, Settings
+from scrapy.signals import spider_closed, spider_opened
 from scrapy.spiders import Spider
 from scrapy.utils.misc import load_object
 from scrapy.utils.python import to_native_str
@@ -61,8 +61,8 @@ class CookiesMiddleware:
         if not crawler.settings.getbool("COOKIES_ENABLED"):
             raise NotConfigured
         obj = cls(crawler.settings)
-        crawler.signals.connect(obj.spider_opened, signal=signals.spider_opened)
-        crawler.signals.connect(obj.spider_closed, signal=signals.spider_closed)
+        crawler.signals.connect(obj.spider_opened, signal=spider_opened)
+        crawler.signals.connect(obj.spider_closed, signal=spider_closed)
         return obj
 
     def spider_opened(self, spider: Spider):
