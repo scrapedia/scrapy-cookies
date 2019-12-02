@@ -11,8 +11,6 @@ from scrapy.settings import Settings
 from scrapy_cookies.settings import default_settings
 from scrapy_cookies.storage.redis_ import RedisStorage
 
-pytest_plugins = ["docker_compose"]
-
 
 @mark.usefixtures("class_scoped_container_getter")
 class RedisStorageTest(TestCase):
