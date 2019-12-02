@@ -2,6 +2,7 @@ import pickle
 from collections.abc import Iterable
 from unittest import TestCase
 
+from pytest import mark
 from scrapy import Spider
 from scrapy.http.cookies import CookieJar
 from scrapy.settings import Settings
@@ -9,7 +10,10 @@ from scrapy.settings import Settings
 from scrapy_cookies.settings import default_settings
 from scrapy_cookies.storage.mongo import MongoStorage
 
+pytest_plugins = ["docker_compose"]
 
+
+@mark.usefixtures("class_scoped_container_getter")
 class MongoStorageTest(TestCase):
     local_settings = {
         "COOKIES_STORAGE": "scrapy_cookies.storage.mongo.MongoStorage",

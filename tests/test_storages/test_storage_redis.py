@@ -3,6 +3,7 @@ from collections.abc import Iterable
 from unittest import TestCase
 
 import ujson
+from pytest import mark
 from scrapy import Spider
 from scrapy.http.cookies import CookieJar
 from scrapy.settings import Settings
@@ -10,7 +11,10 @@ from scrapy.settings import Settings
 from scrapy_cookies.settings import default_settings
 from scrapy_cookies.storage.redis_ import RedisStorage
 
+pytest_plugins = ["docker_compose"]
 
+
+@mark.usefixtures("class_scoped_container_getter")
 class RedisStorageTest(TestCase):
     maxDiff = None
     local_settings = {}
