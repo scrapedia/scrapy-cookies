@@ -1,4 +1,4 @@
-from collections import MutableMapping
+from collections.abc import MutableMapping
 
 from scrapy.settings import Settings
 from scrapy.spiders import Spider
