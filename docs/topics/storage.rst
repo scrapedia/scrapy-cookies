@@ -101,4 +101,3 @@ The following settings can be used to configure this storage:
 * :setting:`COOKIES_REDIS_SSL_CERT_REQS`
 * :setting:`COOKIES_REDIS_SSL_CA_CERTS`
 * :setting:`COOKIES_REDIS_MAX_CONNECTIONS`
-
