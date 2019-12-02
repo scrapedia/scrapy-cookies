@@ -1,8 +1,7 @@
-# Tests requirements
-
 pytest==3.6.3
+pytest-benchmark
 pytest-cov==2.5.1
+pytest-sugar
 pytest-twisted
+pytest-xdist
 testfixtures
-
-# optional for shell wrapper tests
