@@ -1,5 +1,5 @@
 import pickle
-from collections import Iterable
+from collections.abc import Iterable
 from unittest import TestCase
 
 import ujson
