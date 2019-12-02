@@ -1,10 +1,5 @@
-import io
 import logging
-import os
-import pickle
 import re
-import shutil
-import tempfile
 from unittest import TestCase
 
 from scrapy.crawler import Crawler
@@ -28,17 +23,15 @@ class CookiesMiddlewareTest(TestCase):
 
     def setUp(self):
         self.spider = Spider("foo")
-        self.tmpdir = tempfile.mkdtemp()
         settings = Settings()
         settings.setmodule(default_settings)
-        self.crawler = Crawler(self.spider, settings)
+        self.crawler = Crawler(Spider, settings)
         self.mw = CookiesMiddleware.from_crawler(self.crawler)
         self.mw.spider_opened(self.spider)
 
     def tearDown(self):
         self.mw.spider_closed(self.spider)
         del self.mw
-        shutil.rmtree(self.tmpdir)
 
     def test_basic(self):
         req = Request("http://scrapytest.org/")
