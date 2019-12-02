@@ -1,0 +1,24 @@
+version: "3"
+services:
+  mongo:
+    container_name: dc-pytest-scrapy-cookies-mongo
+    image: mongo:latest
+    networks:
+      - pytest_scrapy_cookies
+    ports:
+      - "127.0.0.1:27017:27017"
+    restart: always
+    tty: true
+  redis:
+    container_name: dc-pytest-scrapy-cookies-redis
+    image: redis:latest
+    networks:
+      - pytest_scrapy_cookies
+    ports:
+      - "127.0.0.1:6379:6379"
+    restart: always
+    tty: true
+
+networks:
+  pytest_scrapy_cookies:
+    driver: bridge
