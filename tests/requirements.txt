@@ -1,6 +1,6 @@
-pytest==3.6.3
+pytest
 pytest-benchmark
-pytest-cov==2.5.1
+pytest-cov
 pytest-docker-compose
 pytest-sugar
 pytest-twisted
