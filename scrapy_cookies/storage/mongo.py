@@ -113,6 +113,7 @@ class MongoStorage(BaseStorage):
         return cookiejar
 
     def __delitem__(self, v):
+        # TODO: finish this method
         self.coll.delete_one({})
 
     def __getitem__(self, k) -> CookieJar:
