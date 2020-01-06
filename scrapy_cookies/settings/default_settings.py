@@ -34,7 +34,7 @@ COOKIES_MONGO_MONGOCLIENT_KWARGS = {
     # 'username': 'username',
     # 'password': 'password',
     # 'authSource': 'admin',
-    # 'authMechanism': 'SCRAM_SHA-1',
+    # 'authMechanism': 'SCRAM-SHA-1',
 }
 
 COOKIES_MONGO_DATABASE = "cookies"
