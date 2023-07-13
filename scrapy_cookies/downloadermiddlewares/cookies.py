@@ -10,7 +10,12 @@ from scrapy.settings import SETTINGS_PRIORITIES, Settings
 from scrapy.signals import spider_closed, spider_opened
 from scrapy.spiders import Spider
 from scrapy.utils.misc import load_object
-from scrapy.utils.python import to_native_str
+try:
+    from scrapy.utils.python import to_native_str
+except ImportError:
+    # to_native_str is deprecated since version 2.8
+    # https://docs.scrapy.org/en/2.8/news.html#deprecation-removals
+    from scrapy.utils.python import to_unicode as to_native_str
 
 from scrapy_cookies.settings import default_settings, unfreeze_settings
 
